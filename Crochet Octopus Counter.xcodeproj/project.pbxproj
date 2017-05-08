@@ -1,0 +1,441 @@
+// !$*UTF8*$!
+{
+	archiveVersion = 1;
+	classes = {
+	};
+	objectVersion = 46;
+	objects = {
+
+/* Begin PBXBuildFile section */
+		ED554AB61EBA73B4008F6FCD /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = ED554AB51EBA73B4008F6FCD /* AppDelegate.swift */; };
+		ED554ABB1EBA73B4008F6FCD /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = ED554AB91EBA73B4008F6FCD /* Main.storyboard */; };
+		ED554ABD1EBA73B4008F6FCD /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = ED554ABC1EBA73B4008F6FCD /* Assets.xcassets */; };
+		ED554AC01EBA73B4008F6FCD /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = ED554ABE1EBA73B4008F6FCD /* LaunchScreen.storyboard */; };
+		ED554ACB1EBA73B4008F6FCD /* Crochet_Octopus_CounterTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = ED554ACA1EBA73B4008F6FCD /* Crochet_Octopus_CounterTests.swift */; };
+		ED554AD61EBC1631008F6FCD /* OctopusPatternViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = ED554AD51EBC1631008F6FCD /* OctopusPatternViewController.swift */; };
+		ED554AD81EBC18DA008F6FCD /* PatternRowTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = ED554AD71EBC18DA008F6FCD /* PatternRowTableViewCell.swift */; };
+/* End PBXBuildFile section */
+
+/* Begin PBXContainerItemProxy section */
+		ED554AC71EBA73B4008F6FCD /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = ED554AAA1EBA73B4008F6FCD /* Project object */;
+			proxyType = 1;
+			remoteGlobalIDString = ED554AB11EBA73B4008F6FCD;
+			remoteInfo = "Crochet Octopus Counter";
+		};
+/* End PBXContainerItemProxy section */
+
+/* Begin PBXFileReference section */
+		ED554AB21EBA73B4008F6FCD /* Crochet Octopus Counter.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "Crochet Octopus Counter.app"; sourceTree = BUILT_PRODUCTS_DIR; };
+		ED554AB51EBA73B4008F6FCD /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
+		ED554ABA1EBA73B4008F6FCD /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
+		ED554ABC1EBA73B4008F6FCD /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
+		ED554ABF1EBA73B4008F6FCD /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
+		ED554AC11EBA73B4008F6FCD /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		ED554AC61EBA73B4008F6FCD /* Crochet Octopus CounterTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = "Crochet Octopus CounterTests.xctest"; sourceTree = BUILT_PRODUCTS_DIR; };
+		ED554ACA1EBA73B4008F6FCD /* Crochet_Octopus_CounterTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Crochet_Octopus_CounterTests.swift; sourceTree = "<group>"; };
+		ED554ACC1EBA73B4008F6FCD /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		ED554AD51EBC1631008F6FCD /* OctopusPatternViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = OctopusPatternViewController.swift; sourceTree = "<group>"; };
+		ED554AD71EBC18DA008F6FCD /* PatternRowTableViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = PatternRowTableViewCell.swift; path = "Crochet Octopus Counter/PatternRowTableViewCell.swift"; sourceTree = "<group>"; };
+/* End PBXFileReference section */
+
+/* Begin PBXFrameworksBuildPhase section */
+		ED554AAF1EBA73B4008F6FCD /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		ED554AC31EBA73B4008F6FCD /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXFrameworksBuildPhase section */
+
+/* Begin PBXGroup section */
+		ED554AA91EBA73B4008F6FCD = {
+			isa = PBXGroup;
+			children = (
+				ED554AD91EBC18E6008F6FCD /* View */,
+				ED554AB41EBA73B4008F6FCD /* Crochet Octopus Counter */,
+				ED554AC91EBA73B4008F6FCD /* Crochet Octopus CounterTests */,
+				ED554AB31EBA73B4008F6FCD /* Products */,
+			);
+			sourceTree = "<group>";
+		};
+		ED554AB31EBA73B4008F6FCD /* Products */ = {
+			isa = PBXGroup;
+			children = (
+				ED554AB21EBA73B4008F6FCD /* Crochet Octopus Counter.app */,
+				ED554AC61EBA73B4008F6FCD /* Crochet Octopus CounterTests.xctest */,
+			);
+			name = Products;
+			sourceTree = "<group>";
+		};
+		ED554AB41EBA73B4008F6FCD /* Crochet Octopus Counter */ = {
+			isa = PBXGroup;
+			children = (
+				ED554AB51EBA73B4008F6FCD /* AppDelegate.swift */,
+				ED554AD51EBC1631008F6FCD /* OctopusPatternViewController.swift */,
+				ED554AB91EBA73B4008F6FCD /* Main.storyboard */,
+				ED554ABC1EBA73B4008F6FCD /* Assets.xcassets */,
+				ED554ABE1EBA73B4008F6FCD /* LaunchScreen.storyboard */,
+				ED554AC11EBA73B4008F6FCD /* Info.plist */,
+			);
+			path = "Crochet Octopus Counter";
+			sourceTree = "<group>";
+		};
+		ED554AC91EBA73B4008F6FCD /* Crochet Octopus CounterTests */ = {
+			isa = PBXGroup;
+			children = (
+				ED554ACA1EBA73B4008F6FCD /* Crochet_Octopus_CounterTests.swift */,
+				ED554ACC1EBA73B4008F6FCD /* Info.plist */,
+			);
+			path = "Crochet Octopus CounterTests";
+			sourceTree = "<group>";
+		};
+		ED554AD91EBC18E6008F6FCD /* View */ = {
+			isa = PBXGroup;
+			children = (
+				ED554AD71EBC18DA008F6FCD /* PatternRowTableViewCell.swift */,
+			);
+			name = View;
+			sourceTree = "<group>";
+		};
+/* End PBXGroup section */
+
+/* Begin PBXNativeTarget section */
+		ED554AB11EBA73B4008F6FCD /* Crochet Octopus Counter */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = ED554ACF1EBA73B4008F6FCD /* Build configuration list for PBXNativeTarget "Crochet Octopus Counter" */;
+			buildPhases = (
+				ED554AAE1EBA73B4008F6FCD /* Sources */,
+				ED554AAF1EBA73B4008F6FCD /* Frameworks */,
+				ED554AB01EBA73B4008F6FCD /* Resources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+			);
+			name = "Crochet Octopus Counter";
+			productName = "Crochet Octopus Counter";
+			productReference = ED554AB21EBA73B4008F6FCD /* Crochet Octopus Counter.app */;
+			productType = "com.apple.product-type.application";
+		};
+		ED554AC51EBA73B4008F6FCD /* Crochet Octopus CounterTests */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = ED554AD21EBA73B4008F6FCD /* Build configuration list for PBXNativeTarget "Crochet Octopus CounterTests" */;
+			buildPhases = (
+				ED554AC21EBA73B4008F6FCD /* Sources */,
+				ED554AC31EBA73B4008F6FCD /* Frameworks */,
+				ED554AC41EBA73B4008F6FCD /* Resources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+				ED554AC81EBA73B4008F6FCD /* PBXTargetDependency */,
+			);
+			name = "Crochet Octopus CounterTests";
+			productName = "Crochet Octopus CounterTests";
+			productReference = ED554AC61EBA73B4008F6FCD /* Crochet Octopus CounterTests.xctest */;
+			productType = "com.apple.product-type.bundle.unit-test";
+		};
+/* End PBXNativeTarget section */
+
+/* Begin PBXProject section */
+		ED554AAA1EBA73B4008F6FCD /* Project object */ = {
+			isa = PBXProject;
+			attributes = {
+				LastSwiftUpdateCheck = 0830;
+				LastUpgradeCheck = 0830;
+				ORGANIZATIONNAME = "Mona Wright";
+				TargetAttributes = {
+					ED554AB11EBA73B4008F6FCD = {
+						CreatedOnToolsVersion = 8.3.2;
+						DevelopmentTeam = 3PWMM2G9VG;
+						ProvisioningStyle = Automatic;
+					};
+					ED554AC51EBA73B4008F6FCD = {
+						CreatedOnToolsVersion = 8.3.2;
+						DevelopmentTeam = 745XCLK28U;
+						ProvisioningStyle = Automatic;
+						TestTargetID = ED554AB11EBA73B4008F6FCD;
+					};
+				};
+			};
+			buildConfigurationList = ED554AAD1EBA73B4008F6FCD /* Build configuration list for PBXProject "Crochet Octopus Counter" */;
+			compatibilityVersion = "Xcode 3.2";
+			developmentRegion = English;
+			hasScannedForEncodings = 0;
+			knownRegions = (
+				en,
+				Base,
+			);
+			mainGroup = ED554AA91EBA73B4008F6FCD;
+			productRefGroup = ED554AB31EBA73B4008F6FCD /* Products */;
+			projectDirPath = "";
+			projectRoot = "";
+			targets = (
+				ED554AB11EBA73B4008F6FCD /* Crochet Octopus Counter */,
+				ED554AC51EBA73B4008F6FCD /* Crochet Octopus CounterTests */,
+			);
+		};
+/* End PBXProject section */
+
+/* Begin PBXResourcesBuildPhase section */
+		ED554AB01EBA73B4008F6FCD /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				ED554AC01EBA73B4008F6FCD /* LaunchScreen.storyboard in Resources */,
+				ED554ABD1EBA73B4008F6FCD /* Assets.xcassets in Resources */,
+				ED554ABB1EBA73B4008F6FCD /* Main.storyboard in Resources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		ED554AC41EBA73B4008F6FCD /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXResourcesBuildPhase section */
+
+/* Begin PBXSourcesBuildPhase section */
+		ED554AAE1EBA73B4008F6FCD /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				ED554AD61EBC1631008F6FCD /* OctopusPatternViewController.swift in Sources */,
+				ED554AB61EBA73B4008F6FCD /* AppDelegate.swift in Sources */,
+				ED554AD81EBC18DA008F6FCD /* PatternRowTableViewCell.swift in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		ED554AC21EBA73B4008F6FCD /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				ED554ACB1EBA73B4008F6FCD /* Crochet_Octopus_CounterTests.swift in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXSourcesBuildPhase section */
+
+/* Begin PBXTargetDependency section */
+		ED554AC81EBA73B4008F6FCD /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			target = ED554AB11EBA73B4008F6FCD /* Crochet Octopus Counter */;
+			targetProxy = ED554AC71EBA73B4008F6FCD /* PBXContainerItemProxy */;
+		};
+/* End PBXTargetDependency section */
+
+/* Begin PBXVariantGroup section */
+		ED554AB91EBA73B4008F6FCD /* Main.storyboard */ = {
+			isa = PBXVariantGroup;
+			children = (
+				ED554ABA1EBA73B4008F6FCD /* Base */,
+			);
+			name = Main.storyboard;
+			sourceTree = "<group>";
+		};
+		ED554ABE1EBA73B4008F6FCD /* LaunchScreen.storyboard */ = {
+			isa = PBXVariantGroup;
+			children = (
+				ED554ABF1EBA73B4008F6FCD /* Base */,
+			);
+			name = LaunchScreen.storyboard;
+			sourceTree = "<group>";
+		};
+/* End PBXVariantGroup section */
+
+/* Begin XCBuildConfiguration section */
+		ED554ACD1EBA73B4008F6FCD /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				CLANG_ANALYZER_NONNULL = YES;
+				CLANG_ANALYZER_NUMBER_OBJECT_CONVERSION = YES_AGGRESSIVE;
+				CLANG_CXX_LANGUAGE_STANDARD = "gnu++0x";
+				CLANG_CXX_LIBRARY = "libc++";
+				CLANG_ENABLE_MODULES = YES;
+				CLANG_ENABLE_OBJC_ARC = YES;
+				CLANG_WARN_BOOL_CONVERSION = YES;
+				CLANG_WARN_CONSTANT_CONVERSION = YES;
+				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES_ERROR;
+				CLANG_WARN_DOCUMENTATION_COMMENTS = YES;
+				CLANG_WARN_EMPTY_BODY = YES;
+				CLANG_WARN_ENUM_CONVERSION = YES;
+				CLANG_WARN_INFINITE_RECURSION = YES;
+				CLANG_WARN_INT_CONVERSION = YES;
+				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
+				CLANG_WARN_SUSPICIOUS_MOVE = YES;
+				CLANG_WARN_UNREACHABLE_CODE = YES;
+				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
+				COPY_PHASE_STRIP = NO;
+				DEBUG_INFORMATION_FORMAT = dwarf;
+				ENABLE_STRICT_OBJC_MSGSEND = YES;
+				ENABLE_TESTABILITY = YES;
+				GCC_C_LANGUAGE_STANDARD = gnu99;
+				GCC_DYNAMIC_NO_PIC = NO;
+				GCC_NO_COMMON_BLOCKS = YES;
+				GCC_OPTIMIZATION_LEVEL = 0;
+				GCC_PREPROCESSOR_DEFINITIONS = (
+					"DEBUG=1",
+					"$(inherited)",
+				);
+				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
+				GCC_WARN_ABOUT_RETURN_TYPE = YES_ERROR;
+				GCC_WARN_UNDECLARED_SELECTOR = YES;
+				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
+				GCC_WARN_UNUSED_FUNCTION = YES;
+				GCC_WARN_UNUSED_VARIABLE = YES;
+				IPHONEOS_DEPLOYMENT_TARGET = 10.3;
+				MTL_ENABLE_DEBUG_INFO = YES;
+				ONLY_ACTIVE_ARCH = YES;
+				SDKROOT = iphoneos;
+				SWIFT_ACTIVE_COMPILATION_CONDITIONS = DEBUG;
+				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
+				TARGETED_DEVICE_FAMILY = "1,2";
+			};
+			name = Debug;
+		};
+		ED554ACE1EBA73B4008F6FCD /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				CLANG_ANALYZER_NONNULL = YES;
+				CLANG_ANALYZER_NUMBER_OBJECT_CONVERSION = YES_AGGRESSIVE;
+				CLANG_CXX_LANGUAGE_STANDARD = "gnu++0x";
+				CLANG_CXX_LIBRARY = "libc++";
+				CLANG_ENABLE_MODULES = YES;
+				CLANG_ENABLE_OBJC_ARC = YES;
+				CLANG_WARN_BOOL_CONVERSION = YES;
+				CLANG_WARN_CONSTANT_CONVERSION = YES;
+				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES_ERROR;
+				CLANG_WARN_DOCUMENTATION_COMMENTS = YES;
+				CLANG_WARN_EMPTY_BODY = YES;
+				CLANG_WARN_ENUM_CONVERSION = YES;
+				CLANG_WARN_INFINITE_RECURSION = YES;
+				CLANG_WARN_INT_CONVERSION = YES;
+				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
+				CLANG_WARN_SUSPICIOUS_MOVE = YES;
+				CLANG_WARN_UNREACHABLE_CODE = YES;
+				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
+				COPY_PHASE_STRIP = NO;
+				DEBUG_INFORMATION_FORMAT = "dwarf-with-dsym";
+				ENABLE_NS_ASSERTIONS = NO;
+				ENABLE_STRICT_OBJC_MSGSEND = YES;
+				GCC_C_LANGUAGE_STANDARD = gnu99;
+				GCC_NO_COMMON_BLOCKS = YES;
+				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
+				GCC_WARN_ABOUT_RETURN_TYPE = YES_ERROR;
+				GCC_WARN_UNDECLARED_SELECTOR = YES;
+				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
+				GCC_WARN_UNUSED_FUNCTION = YES;
+				GCC_WARN_UNUSED_VARIABLE = YES;
+				IPHONEOS_DEPLOYMENT_TARGET = 10.3;
+				MTL_ENABLE_DEBUG_INFO = NO;
+				SDKROOT = iphoneos;
+				SWIFT_OPTIMIZATION_LEVEL = "-Owholemodule";
+				TARGETED_DEVICE_FAMILY = "1,2";
+				VALIDATE_PRODUCT = YES;
+			};
+			name = Release;
+		};
+		ED554AD01EBA73B4008F6FCD /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				DEVELOPMENT_TEAM = 3PWMM2G9VG;
+				INFOPLIST_FILE = "Crochet Octopus Counter/Info.plist";
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
+				PRODUCT_BUNDLE_IDENTIFIER = "com.monawright.Crochet-Octopus-Counter";
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_VERSION = 3.0;
+			};
+			name = Debug;
+		};
+		ED554AD11EBA73B4008F6FCD /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				DEVELOPMENT_TEAM = 3PWMM2G9VG;
+				INFOPLIST_FILE = "Crochet Octopus Counter/Info.plist";
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
+				PRODUCT_BUNDLE_IDENTIFIER = "com.monawright.Crochet-Octopus-Counter";
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_VERSION = 3.0;
+			};
+			name = Release;
+		};
+		ED554AD31EBA73B4008F6FCD /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
+				BUNDLE_LOADER = "$(TEST_HOST)";
+				DEVELOPMENT_TEAM = 745XCLK28U;
+				INFOPLIST_FILE = "Crochet Octopus CounterTests/Info.plist";
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
+				PRODUCT_BUNDLE_IDENTIFIER = "com.monawright.Crochet-Octopus-CounterTests";
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_VERSION = 3.0;
+				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/Crochet Octopus Counter.app/Crochet Octopus Counter";
+			};
+			name = Debug;
+		};
+		ED554AD41EBA73B4008F6FCD /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
+				BUNDLE_LOADER = "$(TEST_HOST)";
+				DEVELOPMENT_TEAM = 745XCLK28U;
+				INFOPLIST_FILE = "Crochet Octopus CounterTests/Info.plist";
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
+				PRODUCT_BUNDLE_IDENTIFIER = "com.monawright.Crochet-Octopus-CounterTests";
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_VERSION = 3.0;
+				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/Crochet Octopus Counter.app/Crochet Octopus Counter";
+			};
+			name = Release;
+		};
+/* End XCBuildConfiguration section */
+
+/* Begin XCConfigurationList section */
+		ED554AAD1EBA73B4008F6FCD /* Build configuration list for PBXProject "Crochet Octopus Counter" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				ED554ACD1EBA73B4008F6FCD /* Debug */,
+				ED554ACE1EBA73B4008F6FCD /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		ED554ACF1EBA73B4008F6FCD /* Build configuration list for PBXNativeTarget "Crochet Octopus Counter" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				ED554AD01EBA73B4008F6FCD /* Debug */,
+				ED554AD11EBA73B4008F6FCD /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+		};
+		ED554AD21EBA73B4008F6FCD /* Build configuration list for PBXNativeTarget "Crochet Octopus CounterTests" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				ED554AD31EBA73B4008F6FCD /* Debug */,
+				ED554AD41EBA73B4008F6FCD /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+		};
+/* End XCConfigurationList section */
+	};
+	rootObject = ED554AAA1EBA73B4008F6FCD /* Project object */;
+}
