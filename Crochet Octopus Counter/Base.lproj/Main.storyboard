@@ -25,14 +25,17 @@
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="44" sectionHeaderHeight="28" sectionFooterHeight="28" translatesAutoresizingMaskIntoConstraints="NO" id="cVO-jr-5Rj">
-                                <rect key="frame" x="0.0" y="64" width="375" height="573"/>
+                                <rect key="frame" x="0.0" y="64" width="375" height="0.0"/>
                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" id="Ey2-7L-HML"/>
+                                </constraints>
                                 <prototypes>
                                     <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" reuseIdentifier="PatternRowTableViewCell" id="mJt-ih-DRY" customClass="PatternRowTableViewCell" customModule="Crochet_Octopus_Counter" customModuleProvider="target">
                                         <rect key="frame" x="0.0" y="28" width="375" height="44"/>
                                         <autoresizingMask key="autoresizingMask"/>
                                         <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="mJt-ih-DRY" id="kUq-JK-xZW">
-                                            <rect key="frame" x="0.0" y="0.0" width="375" height="43.5"/>
+                                            <rect key="frame" x="0.0" y="0.0" width="375" height="44"/>
                                             <autoresizingMask key="autoresizingMask"/>
                                             <subviews>
                                                 <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="6Ad-nn-jH1">
@@ -44,7 +47,7 @@
                                                     <state key="selected" image="checkedButton.png"/>
                                                 </button>
                                                 <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" horizontalCompressionResistancePriority="1000" text="Label" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="vWB-ym-BZ0">
-                                                    <rect key="frame" x="328" y="0.0" width="42" height="43.5"/>
+                                                    <rect key="frame" x="328" y="0.0" width="42" height="44"/>
                                                     <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                                     <color key="textColor" white="0.33333333333333331" alpha="1" colorSpace="calibratedWhite"/>
                                                     <nil key="highlightedColor"/>
@@ -71,23 +74,48 @@
                                     <outlet property="delegate" destination="BYZ-38-t0r" id="HXa-He-Z2s"/>
                                 </connections>
                             </tableView>
-                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="eZM-mo-ICT">
-                                <rect key="frame" x="16" y="637" width="343" height="30"/>
-                                <state key="normal" title="Button"/>
+                            <button opaque="NO" contentMode="scaleAspectFit" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="eZM-mo-ICT">
+                                <rect key="frame" x="16" y="64" width="343" height="563"/>
+                                <fontDescription key="fontDescription" name="PartyLetPlain" family="Party LET" pointSize="100"/>
+                                <state key="normal">
+                                    <color key="titleColor" red="0.0" green="0.50196081400000003" blue="0.50196081400000003" alpha="1" colorSpace="calibratedRGB"/>
+                                </state>
+                                <connections>
+                                    <action selector="counterButtonTapped:" destination="BYZ-38-t0r" eventType="touchUpInside" id="F1Z-CC-u0r"/>
+                                </connections>
+                            </button>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="83N-dk-nYq">
+                                <rect key="frame" x="16" y="627" width="343" height="40"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="40" id="NSf-yN-GIp"/>
+                                </constraints>
+                                <state key="normal" image="frog.png"/>
+                                <connections>
+                                    <action selector="frogButtonTapped:" destination="BYZ-38-t0r" eventType="touchUpInside" id="MXg-8Y-86J"/>
+                                </connections>
                             </button>
                         </subviews>
                         <color key="backgroundColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                         <constraints>
-                            <constraint firstAttribute="trailing" secondItem="cVO-jr-5Rj" secondAttribute="trailing" id="03q-et-WXr"/>
-                            <constraint firstItem="eZM-mo-ICT" firstAttribute="leading" secondItem="8bC-Xf-vdC" secondAttribute="leadingMargin" id="4BC-6b-HuG"/>
-                            <constraint firstItem="wfy-db-euE" firstAttribute="top" secondItem="eZM-mo-ICT" secondAttribute="bottom" id="4Xv-jY-AXf"/>
-                            <constraint firstAttribute="trailingMargin" secondItem="eZM-mo-ICT" secondAttribute="trailing" id="B8X-Dv-ihH"/>
-                            <constraint firstItem="eZM-mo-ICT" firstAttribute="top" secondItem="cVO-jr-5Rj" secondAttribute="bottom" id="EzT-Eh-WFR"/>
-                            <constraint firstItem="cVO-jr-5Rj" firstAttribute="leading" secondItem="8bC-Xf-vdC" secondAttribute="leading" id="bk3-3P-SPI"/>
-                            <constraint firstItem="cVO-jr-5Rj" firstAttribute="top" secondItem="y3c-jy-aDJ" secondAttribute="bottom" id="fvE-Zb-PId"/>
+                            <constraint firstItem="83N-dk-nYq" firstAttribute="top" secondItem="eZM-mo-ICT" secondAttribute="bottom" id="2U4-1B-C0t"/>
+                            <constraint firstItem="wfy-db-euE" firstAttribute="top" secondItem="83N-dk-nYq" secondAttribute="bottom" id="BhW-rf-6OP"/>
+                            <constraint firstItem="eZM-mo-ICT" firstAttribute="leading" secondItem="8bC-Xf-vdC" secondAttribute="leadingMargin" id="E3g-PV-eez"/>
+                            <constraint firstItem="cVO-jr-5Rj" firstAttribute="top" secondItem="y3c-jy-aDJ" secondAttribute="bottom" id="F2f-Oe-aHK"/>
+                            <constraint firstAttribute="trailingMargin" secondItem="83N-dk-nYq" secondAttribute="trailing" id="KWg-gS-47L"/>
+                            <constraint firstItem="cVO-jr-5Rj" firstAttribute="leading" secondItem="8bC-Xf-vdC" secondAttribute="leading" id="MeI-H0-Wdz"/>
+                            <constraint firstItem="eZM-mo-ICT" firstAttribute="trailing" secondItem="8bC-Xf-vdC" secondAttribute="trailingMargin" id="PJu-kA-Wtq"/>
+                            <constraint firstItem="83N-dk-nYq" firstAttribute="leading" secondItem="8bC-Xf-vdC" secondAttribute="leadingMargin" id="cr9-2T-IlR"/>
+                            <constraint firstAttribute="trailing" secondItem="cVO-jr-5Rj" secondAttribute="trailing" id="pSr-4a-xxs"/>
+                            <constraint firstItem="eZM-mo-ICT" firstAttribute="top" secondItem="cVO-jr-5Rj" secondAttribute="bottom" id="xAc-vH-gtD"/>
                         </constraints>
                     </view>
                     <navigationItem key="navigationItem" id="yQ6-dl-n79"/>
+                    <connections>
+                        <outlet property="counterButton" destination="eZM-mo-ICT" id="S9D-AI-WYh"/>
+                        <outlet property="counterButtonLabel" destination="eZM-mo-ICT" id="JiD-0s-D13"/>
+                        <outlet property="frogButton" destination="83N-dk-nYq" id="48l-ej-Sym"/>
+                        <outlet property="tableViewHeightConstraint" destination="Ey2-7L-HML" id="cj3-fd-XSb"/>
+                    </connections>
                 </viewController>
             </objects>
             <point key="canvasLocation" x="1444" y="-520.38980509745136"/>
@@ -113,6 +141,7 @@
     </scenes>
     <resources>
         <image name="checkedButton.png" width="208" height="211"/>
+        <image name="frog.png" width="452" height="418"/>
         <image name="uncheckedButton.png" width="158" height="163"/>
     </resources>
 </document>

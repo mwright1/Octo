@@ -20,12 +20,6 @@ class PatternRowTableViewCell: UITableViewCell {
     
     override func setSelected(_ selected: Bool, animated: Bool) {
         super.setSelected(selected, animated: animated)
-//        if isSelected {
-//            rowPatternLabel.textColor = .blue
-//        }
-//        else {
-//            rowPatternLabel.textColor = .black
-//        }
         rowPatternLabel.textColor = selected ? .blue : .black
         checkBoxButton.isSelected = selected
     }
