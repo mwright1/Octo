@@ -14,7 +14,6 @@
         <!--Pattern View Controller-->
         <scene sceneID="tne-QT-ifu">
             <objects>
-                <placeholder placeholderIdentifier="IBFirstResponder" id="dkx-z0-nzr" sceneMemberID="firstResponder"/>
                 <viewController automaticallyAdjustsScrollViewInsets="NO" id="BYZ-38-t0r" userLabel="Pattern View Controller" customClass="OctopusPatternViewController" customModule="Crochet_Octopus_Counter" customModuleProvider="target" sceneMemberID="viewController">
                     <layoutGuides>
                         <viewControllerLayoutGuide type="top" id="y3c-jy-aDJ"/>
@@ -46,21 +45,21 @@
                                                     <state key="normal" image="uncheckedButton.png"/>
                                                     <state key="selected" image="checkedButton.png"/>
                                                 </button>
-                                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" horizontalCompressionResistancePriority="1000" text="Label" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="vWB-ym-BZ0">
-                                                    <rect key="frame" x="328" y="0.0" width="42" height="44"/>
+                                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" horizontalCompressionResistancePriority="1000" text="Label" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="vWB-ym-BZ0">
+                                                    <rect key="frame" x="76" y="0.0" width="294" height="44"/>
                                                     <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                                     <color key="textColor" white="0.33333333333333331" alpha="1" colorSpace="calibratedWhite"/>
                                                     <nil key="highlightedColor"/>
                                                 </label>
                                             </subviews>
                                             <constraints>
-                                                <constraint firstItem="vWB-ym-BZ0" firstAttribute="top" secondItem="kUq-JK-xZW" secondAttribute="top" id="0rC-qG-A2e"/>
                                                 <constraint firstAttribute="bottom" secondItem="6Ad-nn-jH1" secondAttribute="bottom" constant="5" id="1wa-sn-ohm"/>
                                                 <constraint firstItem="6Ad-nn-jH1" firstAttribute="top" secondItem="kUq-JK-xZW" secondAttribute="top" constant="5" id="5bn-g6-Ulo"/>
-                                                <constraint firstAttribute="trailing" secondItem="vWB-ym-BZ0" secondAttribute="trailing" constant="5" id="7ns-CA-fCy"/>
-                                                <constraint firstItem="vWB-ym-BZ0" firstAttribute="leading" relation="greaterThanOrEqual" secondItem="6Ad-nn-jH1" secondAttribute="trailing" constant="12" id="Fxs-2j-RNG"/>
+                                                <constraint firstItem="vWB-ym-BZ0" firstAttribute="leading" secondItem="6Ad-nn-jH1" secondAttribute="trailing" constant="30" id="DPY-iX-P9S"/>
+                                                <constraint firstAttribute="trailingMargin" secondItem="vWB-ym-BZ0" secondAttribute="trailing" constant="-3" id="Twb-mB-bgx"/>
+                                                <constraint firstItem="vWB-ym-BZ0" firstAttribute="centerY" secondItem="6Ad-nn-jH1" secondAttribute="centerY" id="co2-t9-8CG"/>
                                                 <constraint firstItem="6Ad-nn-jH1" firstAttribute="leading" secondItem="kUq-JK-xZW" secondAttribute="leading" constant="12" id="g39-Tf-MeY"/>
-                                                <constraint firstAttribute="bottom" secondItem="vWB-ym-BZ0" secondAttribute="bottom" id="jlH-s1-lAZ"/>
+                                                <constraint firstItem="vWB-ym-BZ0" firstAttribute="top" secondItem="kUq-JK-xZW" secondAttribute="top" id="gYk-Q8-wBp"/>
                                             </constraints>
                                         </tableViewCellContentView>
                                         <connections>
@@ -114,9 +113,11 @@
                         <outlet property="counterButton" destination="eZM-mo-ICT" id="S9D-AI-WYh"/>
                         <outlet property="counterButtonLabel" destination="eZM-mo-ICT" id="JiD-0s-D13"/>
                         <outlet property="frogButton" destination="83N-dk-nYq" id="48l-ej-Sym"/>
+                        <outlet property="tableView" destination="cVO-jr-5Rj" id="Ko2-wn-f7x"/>
                         <outlet property="tableViewHeightConstraint" destination="Ey2-7L-HML" id="cj3-fd-XSb"/>
                     </connections>
                 </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="dkx-z0-nzr" sceneMemberID="firstResponder"/>
             </objects>
             <point key="canvasLocation" x="1444" y="-520.38980509745136"/>
         </scene>

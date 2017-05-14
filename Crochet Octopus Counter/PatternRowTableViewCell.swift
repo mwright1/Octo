@@ -9,7 +9,7 @@
 import UIKit
 
 class PatternRowTableViewCell: UITableViewCell {
-
+    
     @IBOutlet weak var checkBoxButton: UIButton!
     @IBOutlet weak var rowPatternLabel: UILabel!
     
@@ -20,8 +20,9 @@ class PatternRowTableViewCell: UITableViewCell {
     
     override func setSelected(_ selected: Bool, animated: Bool) {
         super.setSelected(selected, animated: animated)
-        rowPatternLabel.textColor = selected ? .blue : .black
+        let tealColor = UIColor(red:0.00, green:0.50, blue:0.50, alpha:1.0)
+        rowPatternLabel.textColor = selected ? (tealColor) : .black
         checkBoxButton.isSelected = selected
     }
-
+    
 }
