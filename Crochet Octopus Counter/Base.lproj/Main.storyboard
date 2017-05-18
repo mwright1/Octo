@@ -38,15 +38,18 @@
                                             <autoresizingMask key="autoresizingMask"/>
                                             <subviews>
                                                 <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="6Ad-nn-jH1">
-                                                    <rect key="frame" x="12" y="5" width="34" height="34"/>
+                                                    <rect key="frame" x="12" y="5" width="286" height="286"/>
                                                     <constraints>
                                                         <constraint firstAttribute="width" secondItem="6Ad-nn-jH1" secondAttribute="height" id="4Ce-81-2SA"/>
                                                     </constraints>
                                                     <state key="normal" image="uncheckedButton.png"/>
                                                     <state key="selected" image="checkedButton.png"/>
                                                 </button>
-                                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" horizontalCompressionResistancePriority="1000" text="Label" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="vWB-ym-BZ0">
-                                                    <rect key="frame" x="76" y="0.0" width="294" height="44"/>
+                                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="1000" horizontalCompressionResistancePriority="1000" text="Label" lineBreakMode="wordWrap" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="vWB-ym-BZ0">
+                                                    <rect key="frame" x="328" y="0.0" width="42" height="296"/>
+                                                    <constraints>
+                                                        <constraint firstAttribute="width" constant="272" id="Fmd-qf-G0C"/>
+                                                    </constraints>
                                                     <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                                     <color key="textColor" white="0.33333333333333331" alpha="1" colorSpace="calibratedWhite"/>
                                                     <nil key="highlightedColor"/>
@@ -55,11 +58,11 @@
                                             <constraints>
                                                 <constraint firstAttribute="bottom" secondItem="6Ad-nn-jH1" secondAttribute="bottom" constant="5" id="1wa-sn-ohm"/>
                                                 <constraint firstItem="6Ad-nn-jH1" firstAttribute="top" secondItem="kUq-JK-xZW" secondAttribute="top" constant="5" id="5bn-g6-Ulo"/>
-                                                <constraint firstItem="vWB-ym-BZ0" firstAttribute="leading" secondItem="6Ad-nn-jH1" secondAttribute="trailing" constant="30" id="DPY-iX-P9S"/>
-                                                <constraint firstAttribute="trailingMargin" secondItem="vWB-ym-BZ0" secondAttribute="trailing" constant="-3" id="Twb-mB-bgx"/>
-                                                <constraint firstItem="vWB-ym-BZ0" firstAttribute="centerY" secondItem="6Ad-nn-jH1" secondAttribute="centerY" id="co2-t9-8CG"/>
+                                                <constraint firstItem="vWB-ym-BZ0" firstAttribute="top" secondItem="kUq-JK-xZW" secondAttribute="top" id="A9k-mH-4wE"/>
+                                                <constraint firstAttribute="trailingMargin" secondItem="vWB-ym-BZ0" secondAttribute="trailing" constant="-3" id="Afj-Uz-trb"/>
+                                                <constraint firstItem="vWB-ym-BZ0" firstAttribute="leading" secondItem="6Ad-nn-jH1" secondAttribute="trailing" constant="30" id="Tfv-HK-SqP"/>
+                                                <constraint firstItem="vWB-ym-BZ0" firstAttribute="centerY" secondItem="6Ad-nn-jH1" secondAttribute="centerY" id="Vke-HL-oZZ"/>
                                                 <constraint firstItem="6Ad-nn-jH1" firstAttribute="leading" secondItem="kUq-JK-xZW" secondAttribute="leading" constant="12" id="g39-Tf-MeY"/>
-                                                <constraint firstItem="vWB-ym-BZ0" firstAttribute="top" secondItem="kUq-JK-xZW" secondAttribute="top" id="gYk-Q8-wBp"/>
                                             </constraints>
                                         </tableViewCellContentView>
                                         <connections>
