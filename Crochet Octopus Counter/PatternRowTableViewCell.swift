@@ -12,6 +12,7 @@ class PatternRowTableViewCell: UITableViewCell {
     
     @IBOutlet weak var checkBoxButton: UIButton!
     @IBOutlet weak var rowPatternLabel: UILabel!
+    @IBOutlet weak var roundLabel: UILabel!
     
     override func awakeFromNib() {
         super.awakeFromNib()
@@ -22,7 +23,9 @@ class PatternRowTableViewCell: UITableViewCell {
         super.setSelected(selected, animated: animated)
         let tealColor = UIColor(red:0.00, green:0.50, blue:0.50, alpha:1.0)
         rowPatternLabel.textColor = selected ? (tealColor) : .black
-        checkBoxButton.isSelected = selected
+        //checkBoxButton.isSelected = selected
+        checkBoxButton.contentEdgeInsets = UIEdgeInsetsMake(10, 10, 10, 10)
+
     }
     
 }

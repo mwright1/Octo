@@ -22,7 +22,6 @@ class RoundGroup {
 }
 
 class OctopusPatternViewController: UIViewController {
-    @IBOutlet weak var uncheckedButton: UIButton!
     @IBOutlet weak var counterButton: UIButton!
     @IBOutlet weak var counterButtonLabel: UIButton!
     @IBOutlet weak var frogButton: UIButton!
@@ -31,6 +30,7 @@ class OctopusPatternViewController: UIViewController {
     
     var counter = 0
     var currentRow = 0
+    var roundNumber = 0
     var roundGroups:[RoundGroup] = []
     
     override func viewDidLoad() {
@@ -44,9 +44,9 @@ class OctopusPatternViewController: UIViewController {
         tableViewHeightConstraint.constant = (view.frame.size.height - frogButton.frame.size.height)/2
         
         roundGroups.append(RoundGroup(text: "Rnd 1: 6 sc in Magic Ring, mark beginning of each round with stitch marker (6 sts)", stitchesPerRound: 2, totalRounds: 1))
-        roundGroups.append(RoundGroup(text: "2sc in each sc around (12 sts)", stitchesPerRound: 2, totalRounds: 1))
-        roundGroups.append(RoundGroup(text: "*1sc in next sc, 2sc in next sc; rep from *, 6 times (18 sts)", stitchesPerRound: 4, totalRounds: 3))
-        roundGroups.append(RoundGroup(text: "*1sc in next 2 sc, 2sc in next sc; rep from *, 6 times (24 sts)", stitchesPerRound: 4, totalRounds: 1))
+        roundGroups.append(RoundGroup(text: "2sc in each sc around (12 sts)", stitchesPerRound: 2, totalRounds: 3))
+        roundGroups.append(RoundGroup(text: "*1sc in next sc, 2sc in next sc; rep from *, 6 times (18 sts)", stitchesPerRound: 4, totalRounds: 2))
+        roundGroups.append(RoundGroup(text: "*1sc in next 2 sc, 2sc in next sc; rep from *, 6 times (24 sts)", stitchesPerRound: 4, totalRounds: 2))
         roundGroups.append(RoundGroup(text: "*1sc in next 3 sc, 2sc in next sc; rep from *, 6 times (30 sts)", stitchesPerRound: 6, totalRounds: 1))
         roundGroups.append(RoundGroup(text: "*1sc in next 4 sc, 2sc in next sc; rep from *, 6 times (36 sts)", stitchesPerRound: 6, totalRounds: 1))
         roundGroups.append(RoundGroup(text: "Rnds 7-14: Sc in each single crochet around (36 sts)", stitchesPerRound: 6, totalRounds: 7))
@@ -68,9 +68,19 @@ class OctopusPatternViewController: UIViewController {
         
         if counter == roundGroups[currentRow].stitchesPerRound {
             roundGroups[currentRow].roundsCompleted += 1
+            roundNumber += 1
             
             if roundGroups[currentRow].roundsCompleted == roundGroups[currentRow].totalRounds {
+                if let cell = tableView.cellForRow(at: IndexPath(row: currentRow, section: 0)) as? PatternRowTableViewCell {
+                    cell.checkBoxButton.isSelected = true
+                }
                 currentRow += 1
+            }
+            
+            if roundGroups[currentRow].totalRounds > 1 {
+                if let cell = tableView.cellForRow(at: IndexPath(row: currentRow, section: 0)) as? PatternRowTableViewCell {
+                    cell.roundLabel.text = "Rnd \(roundNumber + 1)"
+                }
             }
             
             counter = 0
@@ -81,6 +91,7 @@ class OctopusPatternViewController: UIViewController {
         counterButtonLabel.setTitle("\(counter)", for: .normal)
         frogButton.isUserInteractionEnabled = true
     }
+    
     
     @IBAction func frogButtonTapped(_ sender: UIButton) {
         if counter >= 1 {
