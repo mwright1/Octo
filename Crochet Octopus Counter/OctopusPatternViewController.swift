@@ -73,7 +73,11 @@ class OctopusPatternViewController: UIViewController {
             if roundGroups[currentRow].roundsCompleted == roundGroups[currentRow].totalRounds {
                 if let cell = tableView.cellForRow(at: IndexPath(row: currentRow, section: 0)) as? PatternRowTableViewCell {
                     cell.checkBoxButton.isSelected = true
+                    let tealColor = UIColor(red:0.00, green:0.50, blue:0.50, alpha:1.0)
+                    cell.rowPatternLabel.textColor = tealColor
+                    cell.roundLabel.text = ""
                 }
+                
                 currentRow += 1
             }
             
@@ -85,6 +89,7 @@ class OctopusPatternViewController: UIViewController {
             
             counter = 0
             tableView.selectRow(at: IndexPath(row: currentRow, section: 0), animated: false, scrollPosition: .none)
+            tableView.scrollToNearestSelectedRow(at: UITableViewScrollPosition.middle, animated: true)
             frogButton.isUserInteractionEnabled = true
         }
         

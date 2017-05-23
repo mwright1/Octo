@@ -21,11 +21,7 @@ class PatternRowTableViewCell: UITableViewCell {
     
     override func setSelected(_ selected: Bool, animated: Bool) {
         super.setSelected(selected, animated: animated)
-        let tealColor = UIColor(red:0.00, green:0.50, blue:0.50, alpha:1.0)
-        rowPatternLabel.textColor = selected ? (tealColor) : .black
-        //checkBoxButton.isSelected = selected
-        checkBoxButton.contentEdgeInsets = UIEdgeInsetsMake(10, 10, 10, 10)
-
+       checkBoxButton.contentEdgeInsets = UIEdgeInsetsMake(10, 10, 10, 10)
     }
     
 }
