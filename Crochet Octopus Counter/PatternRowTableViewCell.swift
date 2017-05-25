@@ -14,6 +14,15 @@ class PatternRowTableViewCell: UITableViewCell {
     @IBOutlet weak var rowPatternLabel: UILabel!
     @IBOutlet weak var roundLabel: UILabel!
     
+    override func prepareForReuse() {
+        super.prepareForReuse()
+        checkBoxButton.isSelected = false
+        
+    
+        
+    }
+    
+    
     override func awakeFromNib() {
         super.awakeFromNib()
         // Initialization code
@@ -21,7 +30,8 @@ class PatternRowTableViewCell: UITableViewCell {
     
     override func setSelected(_ selected: Bool, animated: Bool) {
         super.setSelected(selected, animated: animated)
-       checkBoxButton.contentEdgeInsets = UIEdgeInsetsMake(10, 10, 10, 10)
+        checkBoxButton.contentEdgeInsets = UIEdgeInsetsMake(10, 10, 10, 10)
     }
     
 }
+
