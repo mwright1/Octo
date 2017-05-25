@@ -19,6 +19,7 @@ class RoundGroup {
         self.stitchesPerRound = stitchesPerRound
         self.totalRounds = totalRounds
     }
+    
 }
 
 class OctopusPatternViewController: UIViewController {
@@ -61,6 +62,7 @@ class OctopusPatternViewController: UIViewController {
         
         counterButtonLabel.setTitle("0", for: .normal)
         frogButton.imageView?.contentMode = .scaleAspectFit
+        
     }
     
     @IBAction func counterButtonTapped(_ sender: UIButton) {
@@ -116,13 +118,30 @@ extension OctopusPatternViewController: UITableViewDataSource {
     }
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-        let cell = tableView.dequeueReusableCell(withIdentifier: "PatternRowTableViewCell", for: indexPath) as! PatternRowTableViewCell
-        cell.rowPatternLabel.text = roundGroups[indexPath.row].text
+        let cell: PatternRowTableViewCell = tableView.dequeueReusableCell(withIdentifier: "PatternRowTableViewCell", for: indexPath) as! PatternRowTableViewCell
         
+        if roundGroups[indexPath.row].roundsCompleted == roundGroups[indexPath.row].totalRounds {
+            cell.checkBoxButton.isSelected = true
+            let tealColor = UIColor(red:0.00, green:0.50, blue:0.50, alpha:1.0)
+            cell.rowPatternLabel.textColor = tealColor
+            cell.roundLabel.text = ""
+            
+        }
+        else {
+            cell.rowPatternLabel.text = roundGroups[indexPath.row].text
+            cell.roundLabel.text = nil
+            cell.rowPatternLabel.textColor = .darkGray
+        }
+        
+     
+        //cell.roundLabel.text = String(roundGroups[indexPath.row].roundsCompleted)
         return cell
+        
     }
+    
 }
 
 extension OctopusPatternViewController: UITableViewDelegate {
     
+
 }
