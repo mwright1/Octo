@@ -72,15 +72,20 @@ class OctopusPatternViewController: UIViewController {
             roundGroups[currentRow].roundsCompleted += 1
             roundNumber += 1
             
+            
+            
             if roundGroups[currentRow].roundsCompleted == roundGroups[currentRow].totalRounds {
                 if let cell = tableView.cellForRow(at: IndexPath(row: currentRow, section: 0)) as? PatternRowTableViewCell {
                     cell.checkBoxButton.isSelected = true
                     let tealColor = UIColor(red:0.00, green:0.50, blue:0.50, alpha:1.0)
                     cell.rowPatternLabel.textColor = tealColor
                     cell.roundLabel.text = ""
+                    
+                    
                 }
                 
                 currentRow += 1
+                
             }
             
             if roundGroups[currentRow].totalRounds > 1 {
@@ -120,21 +125,27 @@ extension OctopusPatternViewController: UITableViewDataSource {
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let cell: PatternRowTableViewCell = tableView.dequeueReusableCell(withIdentifier: "PatternRowTableViewCell", for: indexPath) as! PatternRowTableViewCell
         
+        // complete rounds state
         if roundGroups[indexPath.row].roundsCompleted == roundGroups[indexPath.row].totalRounds {
             cell.checkBoxButton.isSelected = true
             let tealColor = UIColor(red:0.00, green:0.50, blue:0.50, alpha:1.0)
             cell.rowPatternLabel.textColor = tealColor
             cell.roundLabel.text = ""
-            
         }
-        else {
+        
+        // incomplete rounds state
+        if roundGroups[indexPath.row].roundsCompleted != 0 && roundGroups[indexPath.row].roundsCompleted != roundGroups[indexPath.row].totalRounds  && roundGroups[indexPath.row].totalRounds > 1 {
+            
+            cell.roundLabel.text = "Rnd \(roundNumber + 1)"
+        }
+        
+        // rounds not started state
+        if  roundGroups[indexPath.row].roundsCompleted == 0 {
             cell.rowPatternLabel.text = roundGroups[indexPath.row].text
-            cell.roundLabel.text = nil
+            cell.roundLabel.text = ""
             cell.rowPatternLabel.textColor = .darkGray
         }
         
-     
-        //cell.roundLabel.text = String(roundGroups[indexPath.row].roundsCompleted)
         return cell
         
     }
@@ -143,5 +154,5 @@ extension OctopusPatternViewController: UITableViewDataSource {
 
 extension OctopusPatternViewController: UITableViewDelegate {
     
-
+    
 }
