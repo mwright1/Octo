@@ -17,11 +17,7 @@ class PatternRowTableViewCell: UITableViewCell {
     override func prepareForReuse() {
         super.prepareForReuse()
         checkBoxButton.isSelected = false
-        
-    
-        
     }
-    
     
     override func awakeFromNib() {
         super.awakeFromNib()
@@ -32,6 +28,29 @@ class PatternRowTableViewCell: UITableViewCell {
         super.setSelected(selected, animated: animated)
         checkBoxButton.contentEdgeInsets = UIEdgeInsetsMake(10, 10, 10, 10)
     }
+    
+    func configure(with round: RoundGroup, number: Int) {
+        
+        if round.state == .completed {
+            checkBoxButton.isSelected = true
+            let tealColor = UIColor(red:0.00, green:0.50, blue:0.50, alpha:1.0)
+            rowPatternLabel.textColor = tealColor
+            roundLabel.text = ""
+        }
+        
+        if round.state == .inProgress {
+            
+            roundLabel.text = "Rnd \(number + 1)"
+        }
+        
+        if round.state == .notStarted {
+            rowPatternLabel.text = round.text
+            roundLabel.text = ""
+            rowPatternLabel.textColor = .darkGray
+        }
+        
+    }
+    
     
 }
 

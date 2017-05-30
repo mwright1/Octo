@@ -9,16 +9,29 @@
 import UIKit
 
 class RoundGroup {
+    
+    enum State {
+        case notStarted
+        case inProgress
+        case completed
+    }
+    
+    var state = State.notStarted
     var text:String
     var stitchesPerRound:Int
     var totalRounds:Int
-    var roundsCompleted:Int = 0
+    var roundsCompleted:Int = 0 {
+        didSet {
+            
+        }
+    }
     
     init(text:String, stitchesPerRound:Int, totalRounds:Int) {
         self.text = text
         self.stitchesPerRound = stitchesPerRound
         self.totalRounds = totalRounds
     }
+    
     
 }
 
@@ -62,7 +75,6 @@ class OctopusPatternViewController: UIViewController {
         
         counterButtonLabel.setTitle("0", for: .normal)
         frogButton.imageView?.contentMode = .scaleAspectFit
-        
     }
     
     @IBAction func counterButtonTapped(_ sender: UIButton) {
@@ -72,20 +84,27 @@ class OctopusPatternViewController: UIViewController {
             roundGroups[currentRow].roundsCompleted += 1
             roundNumber += 1
             
-            
-            
             if roundGroups[currentRow].roundsCompleted == roundGroups[currentRow].totalRounds {
+                roundGroups[currentRow].state = .completed
+            }
+            
+            if roundGroups[currentRow].roundsCompleted != 0 && roundGroups[currentRow].roundsCompleted != roundGroups[currentRow].totalRounds  && roundGroups[currentRow].totalRounds > 1 {
+                roundGroups[currentRow].state = .inProgress
+            }
+            
+            if roundGroups[currentRow].roundsCompleted == 0 {
+                roundGroups[currentRow].state = .notStarted
+            }
+            
+            if roundGroups[currentRow].state == .completed {
                 if let cell = tableView.cellForRow(at: IndexPath(row: currentRow, section: 0)) as? PatternRowTableViewCell {
                     cell.checkBoxButton.isSelected = true
                     let tealColor = UIColor(red:0.00, green:0.50, blue:0.50, alpha:1.0)
                     cell.rowPatternLabel.textColor = tealColor
                     cell.roundLabel.text = ""
-                    
-                    
                 }
                 
                 currentRow += 1
-                
             }
             
             if roundGroups[currentRow].totalRounds > 1 {
@@ -124,27 +143,7 @@ extension OctopusPatternViewController: UITableViewDataSource {
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let cell: PatternRowTableViewCell = tableView.dequeueReusableCell(withIdentifier: "PatternRowTableViewCell", for: indexPath) as! PatternRowTableViewCell
-        
-        // complete rounds state
-        if roundGroups[indexPath.row].roundsCompleted == roundGroups[indexPath.row].totalRounds {
-            cell.checkBoxButton.isSelected = true
-            let tealColor = UIColor(red:0.00, green:0.50, blue:0.50, alpha:1.0)
-            cell.rowPatternLabel.textColor = tealColor
-            cell.roundLabel.text = ""
-        }
-        
-        // incomplete rounds state
-        if roundGroups[indexPath.row].roundsCompleted != 0 && roundGroups[indexPath.row].roundsCompleted != roundGroups[indexPath.row].totalRounds  && roundGroups[indexPath.row].totalRounds > 1 {
-            
-            cell.roundLabel.text = "Rnd \(roundNumber + 1)"
-        }
-        
-        // rounds not started state
-        if  roundGroups[indexPath.row].roundsCompleted == 0 {
-            cell.rowPatternLabel.text = roundGroups[indexPath.row].text
-            cell.roundLabel.text = ""
-            cell.rowPatternLabel.textColor = .darkGray
-        }
+        cell.configure(with: roundGroups[indexPath.row], number: roundNumber)
         
         return cell
         
@@ -153,6 +152,5 @@ extension OctopusPatternViewController: UITableViewDataSource {
 }
 
 extension OctopusPatternViewController: UITableViewDelegate {
-    
     
 }
