@@ -157,7 +157,7 @@
 				TargetAttributes = {
 					ED554AB11EBA73B4008F6FCD = {
 						CreatedOnToolsVersion = 8.3.2;
-						DevelopmentTeam = 3PWMM2G9VG;
+						DevelopmentTeam = 745XCLK28U;
 						ProvisioningStyle = Automatic;
 					};
 					ED554AC51EBA73B4008F6FCD = {
@@ -355,7 +355,7 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
-				DEVELOPMENT_TEAM = 3PWMM2G9VG;
+				DEVELOPMENT_TEAM = 745XCLK28U;
 				INFOPLIST_FILE = "Crochet Octopus Counter/Info.plist";
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = "com.monawright.Crochet-Octopus-Counter";
@@ -368,7 +368,7 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
-				DEVELOPMENT_TEAM = 3PWMM2G9VG;
+				DEVELOPMENT_TEAM = 745XCLK28U;
 				INFOPLIST_FILE = "Crochet Octopus Counter/Info.plist";
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = "com.monawright.Crochet-Octopus-Counter";
@@ -426,6 +426,7 @@
 				ED554AD11EBA73B4008F6FCD /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 		ED554AD21EBA73B4008F6FCD /* Build configuration list for PBXNativeTarget "Crochet Octopus CounterTests" */ = {
 			isa = XCConfigurationList;
@@ -434,6 +435,7 @@
 				ED554AD41EBA73B4008F6FCD /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
 	};

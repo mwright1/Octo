@@ -29,26 +29,24 @@ class PatternRowTableViewCell: UITableViewCell {
         checkBoxButton.contentEdgeInsets = UIEdgeInsetsMake(10, 10, 10, 10)
     }
     
-    func configure(with round: RoundGroup, number: Int) {
+    func configure(with round: RoundGroup, roundNumber: Int) {
         
-        if round.state == .completed {
+        switch round.state {
+        case .completed:
             checkBoxButton.isSelected = true
             let tealColor = UIColor(red:0.00, green:0.50, blue:0.50, alpha:1.0)
             rowPatternLabel.textColor = tealColor
             roundLabel.text = ""
-        }
-        
-        if round.state == .inProgress {
-            
-            roundLabel.text = "Rnd \(number + 1)"
-        }
-        
-        if round.state == .notStarted {
+
+        case .inProgress:
+            roundLabel.text = "Rnd \(roundNumber + 1)"
+
+        case .notStarted:
             rowPatternLabel.text = round.text
             roundLabel.text = ""
             rowPatternLabel.textColor = .darkGray
+
         }
-        
     }
     
     
