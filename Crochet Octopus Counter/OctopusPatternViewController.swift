@@ -8,39 +8,6 @@
 
 import UIKit
 
-class RoundGroup {
-    
-    enum State {
-        case notStarted
-        case inProgress
-        case completed
-    }
-    
-    var state = State.notStarted
-    var text:String
-    var stitchesPerRound:Int
-    var totalRounds:Int
-    var startingRound:Int
-    var roundsCompleted:Int = 0 {
-        didSet {
-            if roundsCompleted == totalRounds {
-                state = .completed
-            } else if roundsCompleted != 0 && roundsCompleted != totalRounds && totalRounds > 1 {
-                state = .inProgress
-            } else if roundsCompleted == 0 {
-                state = .notStarted
-            }
-        }
-    }
-    
-    init(text:String, stitchesPerRound:Int, totalRounds:Int, startingRound:Int) {
-        self.text = text
-        self.stitchesPerRound = stitchesPerRound
-        self.totalRounds = totalRounds
-        self.startingRound = startingRound
-    }
-    
-}
 
 class OctopusPatternViewController: UIViewController {
     @IBOutlet weak var counterButton: UIButton!
@@ -62,8 +29,8 @@ class OctopusPatternViewController: UIViewController {
         RoundGroup(text: "Rnd 3: *1sc in next sc, 2sc in next sc; rep from *, 6 times (18 sts)", stitchesPerRound: 18, totalRounds: 1, startingRound: 3),
         RoundGroup(text: "Rnd 4: *1sc in next 2 sc, 2sc in next sc; rep from *, 6 times (24 sts)", stitchesPerRound: 24, totalRounds: 1, startingRound: 4),
         RoundGroup(text: "Rnd 5: *1sc in next 3 sc, 2sc in next sc; rep from *, 6 times (30 sts)", stitchesPerRound: 30, totalRounds: 1, startingRound: 5),
-        RoundGroup(text: "Rnd 6: *1sc in next 4 sc, 2sc in next sc; rep from *, 6 times (36 sts)", stitchesPerRound: 36, totalRounds: 1, startingRound: 6),
-        RoundGroup(text: "Rnds 7-14: Sc in each single crochet around (36 sts)", stitchesPerRound: 36, totalRounds: 8, startingRound: 7),
+        RoundGroup(text: "Rnd 6: *1sc in next 4 sc, 2sc in next sc; rep from *, 6 times (36 sts)", stitchesPerRound: 36, totalRounds: 1, startingRound: 6, notes: ""),
+        RoundGroup(text: "Rnds 7-14: Sc in each single crochet around (36 sts)", stitchesPerRound: 36, totalRounds: 8, startingRound: 7, notes: ""),
         RoundGroup(text: "Rnd 15: *1sc in next 4 sc, sc2tog; rep from *, 6 times (30 sts)", stitchesPerRound: 30, totalRounds: 1, startingRound: 15),
         RoundGroup(text: "Rnds 16-17: 1sc in each single crochet around (30 sts)", stitchesPerRound: 30, totalRounds: 2, startingRound: 16),
         RoundGroup(text: "Rnd 18: *1sc in next 3 sc, sc2tog; rep from *, 6 times (24 sts)", stitchesPerRound: 24, totalRounds: 1, startingRound: 18),
@@ -89,6 +56,7 @@ class OctopusPatternViewController: UIViewController {
         
         title = "Octo"
         
+        tableView.delegate = self
         tableView.estimatedRowHeight = 66.0
         tableView.rowHeight = UITableViewAutomaticDimension
         
@@ -162,14 +130,16 @@ extension OctopusPatternViewController: UITableViewDataSource {
         }
         
         cell.configure(with: roundGroups[indexPath.row], roundNumber: roundNumber)
-        
-        
         return cell
         
     }
+
     
 }
 
 extension OctopusPatternViewController: UITableViewDelegate {
     
+    func tableView(_ tableView: UITableView, accessoryButtonTappedForRowWith indexPath: IndexPath) {
+        print("")
+    }
 }
