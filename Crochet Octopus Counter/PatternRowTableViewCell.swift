@@ -37,6 +37,7 @@ class PatternRowTableViewCell: UITableViewCell {
         else {
             accessoryType = .none
         }
+        rowPatternLabel.text = round.text
         
         switch round.state {
         case .completed:
@@ -49,7 +50,6 @@ class PatternRowTableViewCell: UITableViewCell {
             roundLabel.text = "Rnd \(roundNumber + 1)"
             
         case .notStarted:
-            rowPatternLabel.text = round.text
             roundLabel.text = ""
             rowPatternLabel.textColor = .darkGray
             
