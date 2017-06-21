@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		ED422CF41EFB2828008C3C9E /* InfoDetailsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = ED422CF31EFB2828008C3C9E /* InfoDetailsViewController.swift */; };
 		ED554AB61EBA73B4008F6FCD /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = ED554AB51EBA73B4008F6FCD /* AppDelegate.swift */; };
 		ED554ABB1EBA73B4008F6FCD /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = ED554AB91EBA73B4008F6FCD /* Main.storyboard */; };
 		ED554ABD1EBA73B4008F6FCD /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = ED554ABC1EBA73B4008F6FCD /* Assets.xcassets */; };
@@ -28,6 +29,7 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
+		ED422CF31EFB2828008C3C9E /* InfoDetailsViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = InfoDetailsViewController.swift; sourceTree = "<group>"; };
 		ED554AB21EBA73B4008F6FCD /* Crochet Octopus Counter.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "Crochet Octopus Counter.app"; sourceTree = BUILT_PRODUCTS_DIR; };
 		ED554AB51EBA73B4008F6FCD /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		ED554ABA1EBA73B4008F6FCD /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
@@ -84,6 +86,7 @@
 			children = (
 				ED554AB51EBA73B4008F6FCD /* AppDelegate.swift */,
 				ED554AD51EBC1631008F6FCD /* OctopusPatternViewController.swift */,
+				ED422CF31EFB2828008C3C9E /* InfoDetailsViewController.swift */,
 				EDB2B9441EE864870096A383 /* RoundGroup.swift */,
 				ED554AB91EBA73B4008F6FCD /* Main.storyboard */,
 				ED554ABC1EBA73B4008F6FCD /* Assets.xcassets */,
@@ -216,6 +219,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				EDB2B9451EE864870096A383 /* RoundGroup.swift in Sources */,
+				ED422CF41EFB2828008C3C9E /* InfoDetailsViewController.swift in Sources */,
 				ED554AD61EBC1631008F6FCD /* OctopusPatternViewController.swift in Sources */,
 				ED554AB61EBA73B4008F6FCD /* AppDelegate.swift in Sources */,
 				ED554AD81EBC18DA008F6FCD /* PatternRowTableViewCell.swift in Sources */,

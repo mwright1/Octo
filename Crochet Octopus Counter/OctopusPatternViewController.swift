@@ -23,14 +23,15 @@ class OctopusPatternViewController: UIViewController {
     }
     var currentRow = 0
     var roundNumber = 0
+    var indexOfTappedInfoButton = 0
     let roundGroups = [
         RoundGroup(text: "Rnd 1: 6 sc in Magic Ring, mark beginning of each round with stitch marker (6 sts)", stitchesPerRound: 6, totalRounds: 1, startingRound: 1),
         RoundGroup(text: "Rnd 2: 2sc in each sc around (12 sts)", stitchesPerRound: 12, totalRounds: 1, startingRound: 2),
         RoundGroup(text: "Rnd 3: *1sc in next sc, 2sc in next sc; rep from *, 6 times (18 sts)", stitchesPerRound: 18, totalRounds: 1, startingRound: 3),
         RoundGroup(text: "Rnd 4: *1sc in next 2 sc, 2sc in next sc; rep from *, 6 times (24 sts)", stitchesPerRound: 24, totalRounds: 1, startingRound: 4),
         RoundGroup(text: "Rnd 5: *1sc in next 3 sc, 2sc in next sc; rep from *, 6 times (30 sts)", stitchesPerRound: 30, totalRounds: 1, startingRound: 5),
-        RoundGroup(text: "Rnd 6: *1sc in next 4 sc, 2sc in next sc; rep from *, 6 times (36 sts)", stitchesPerRound: 36, totalRounds: 1, startingRound: 6, notes: ""),
-        RoundGroup(text: "Rnds 7-14: Sc in each single crochet around (36 sts)", stitchesPerRound: 36, totalRounds: 8, startingRound: 7, notes: ""),
+        RoundGroup(text: "Rnd 6: *1sc in next 4 sc, 2sc in next sc; rep from *, 6 times (36 sts)", stitchesPerRound: 36, totalRounds: 1, startingRound: 6, notes: "boris"),
+        RoundGroup(text: "Rnds 7-14: Sc in each single crochet around (36 sts)", stitchesPerRound: 36, totalRounds: 8, startingRound: 7, notes: "buddy"),
         RoundGroup(text: "Rnd 15: *1sc in next 4 sc, sc2tog; rep from *, 6 times (30 sts)", stitchesPerRound: 30, totalRounds: 1, startingRound: 15),
         RoundGroup(text: "Rnds 16-17: 1sc in each single crochet around (30 sts)", stitchesPerRound: 30, totalRounds: 2, startingRound: 16),
         RoundGroup(text: "Rnd 18: *1sc in next 3 sc, sc2tog; rep from *, 6 times (24 sts)", stitchesPerRound: 24, totalRounds: 1, startingRound: 18),
@@ -41,15 +42,15 @@ class OctopusPatternViewController: UIViewController {
         RoundGroup(text: "Rnd 24: 1sc in each single crochet around (16 sts)", stitchesPerRound: 16, totalRounds: 1, startingRound: 24)
     ]
     
-//        Test data
-//    let roundGroups = [
-//        RoundGroup(text: "Rnd 1: 6 sc in Magic Ring, mark beginning of each round with stitch marker (6 sts)", stitchesPerRound: 2, totalRounds: 1, startingRound: 1),
-//        RoundGroup(text: "2sc in each sc around (12 sts)", stitchesPerRound: 2, totalRounds: 3, startingRound: 2),
-//        RoundGroup(text: "*1sc in next sc, 2sc in next sc; rep from *, 6 times (18 sts)", stitchesPerRound: 4, totalRounds: 2, startingRound: 3),
-//        RoundGroup(text: "*1sc in next 2 sc, 2sc in next sc; rep from *, 6 times (24 sts)", stitchesPerRound: 4, totalRounds: 2, startingRound: 4),
-//        RoundGroup(text: "*1sc in next 3 sc, 2sc in next sc; rep from *, 6 times (30 sts)", stitchesPerRound: 6, totalRounds: 1, startingRound: 5),
-//        RoundGroup(text: "*1sc in next 4 sc, 2sc in next sc; rep from *, 6 times (36 sts)", stitchesPerRound: 6, totalRounds: 1, startingRound: 6),
-//        ]
+    //        Test data
+    //    let roundGroups = [
+    //        RoundGroup(text: "Rnd 1: 6 sc in Magic Ring, mark beginning of each round with stitch marker (6 sts)", stitchesPerRound: 2, totalRounds: 1, startingRound: 1),
+    //        RoundGroup(text: "2sc in each sc around (12 sts)", stitchesPerRound: 2, totalRounds: 3, startingRound: 2),
+    //        RoundGroup(text: "*1sc in next sc, 2sc in next sc; rep from *, 6 times (18 sts)", stitchesPerRound: 4, totalRounds: 2, startingRound: 3),
+    //        RoundGroup(text: "*1sc in next 2 sc, 2sc in next sc; rep from *, 6 times (24 sts)", stitchesPerRound: 4, totalRounds: 2, startingRound: 4),
+    //        RoundGroup(text: "*1sc in next 3 sc, 2sc in next sc; rep from *, 6 times (30 sts)", stitchesPerRound: 6, totalRounds: 1, startingRound: 5),
+    //        RoundGroup(text: "*1sc in next 4 sc, 2sc in next sc; rep from *, 6 times (36 sts)", stitchesPerRound: 6, totalRounds: 1, startingRound: 6),
+    //        ]
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -63,12 +64,12 @@ class OctopusPatternViewController: UIViewController {
         tableView.selectRow(at: IndexPath(row: currentRow, section: 0), animated: false, scrollPosition: .none)
         
         tableViewHeightConstraint.constant = (view.frame.size.height - frogButton.frame.size.height)/2
-                
+        
         counter = 0
         frogButton.imageView?.contentMode = .scaleAspectFit
-       
+        
     }
-
+    
     
     @IBAction func counterButtonTapped(_ sender: UIButton) {
         counter += 1
@@ -111,6 +112,17 @@ class OctopusPatternViewController: UIViewController {
             cell.configure(with: roundGroups[row], roundNumber: roundNumber)
         }
     }
+    
+    
+    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
+        super.prepare(for: segue, sender: nil)
+        if segue.identifier == "showsInfoDetails", let nc = segue.destination as? UINavigationController {
+            if let vc = nc.topViewController as? InfoDetailsViewController {
+                vc.notes = roundGroups[self.indexOfTappedInfoButton].notes
+            }
+        }
+    }
+    
 }
 
 extension OctopusPatternViewController: UITableViewDataSource {
@@ -129,15 +141,17 @@ extension OctopusPatternViewController: UITableViewDataSource {
         return cell
         
     }
-
+    
     
 }
 
 extension OctopusPatternViewController: UITableViewDelegate {
     
     func tableView(_ tableView: UITableView, accessoryButtonTappedForRowWith indexPath: IndexPath) {
-        print("b")
-       // performSegue(withIdentifier: "notesDetails", sender: nil)
+        self.indexOfTappedInfoButton = indexPath.row
+        performSegue(withIdentifier: "showsInfoDetails", sender: nil)
         
     }
 }
+
+
