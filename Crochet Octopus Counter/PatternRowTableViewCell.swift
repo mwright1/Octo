@@ -17,6 +17,7 @@ class PatternRowTableViewCell: UITableViewCell {
     override func prepareForReuse() {
         super.prepareForReuse()
         checkBoxButton.isSelected = false
+        roundLabel.text = ""
     }
     
     override func awakeFromNib() {
@@ -37,6 +38,7 @@ class PatternRowTableViewCell: UITableViewCell {
         else {
             accessoryType = .none
         }
+        
         rowPatternLabel.text = round.text
         
         switch round.state {

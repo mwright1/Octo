@@ -22,17 +22,7 @@ class RoundGroup {
     var stitchesPerRound:Int
     var totalRounds:Int
     var startingRound:Int
-    var roundsCompleted:Int = 0 {
-        didSet {
-            if roundsCompleted == totalRounds {
-                state = .completed
-            } else if roundsCompleted != 0 && roundsCompleted != totalRounds && totalRounds > 1 {
-                state = .inProgress
-            } else if roundsCompleted == 0 {
-                state = .notStarted
-            }
-        }
-    }
+    var roundsCompleted:Int = 0
     
     init(text:String, stitchesPerRound:Int, totalRounds:Int, startingRound:Int, notes: String? = nil) {
         self.text = text
@@ -40,5 +30,17 @@ class RoundGroup {
         self.totalRounds = totalRounds
         self.startingRound = startingRound
         self.notes = notes
+    }
+    
+    func updateState(roundNumber: Int) {
+        if roundsCompleted == totalRounds {
+            state = .completed
+        }
+        else if (roundsCompleted != 0 && roundsCompleted != totalRounds && totalRounds > 1)  || startingRound == roundNumber + 1 {
+            state = .inProgress
+        }
+        else if roundsCompleted == 0 {
+            state = .notStarted
+        }
     }
 }

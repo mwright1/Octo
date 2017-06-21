@@ -66,6 +66,7 @@ class OctopusPatternViewController: UIViewController {
                 
         counter = 0
         frogButton.imageView?.contentMode = .scaleAspectFit
+       
     }
 
     
@@ -77,25 +78,13 @@ class OctopusPatternViewController: UIViewController {
             currentRound.roundsCompleted += 1
             roundNumber += 1
             
+            currentRound.updateState(roundNumber: roundNumber)
+            
             if currentRound.state == .completed {
-                if let cell = tableView.cellForRow(at: IndexPath(row: currentRow, section: 0)) as? PatternRowTableViewCell {
-                    
-                    cell.configure(with: currentRound, roundNumber: roundNumber)
-                }
-                
+                updateCell(atRow: currentRow)
                 currentRow += 1
             }
-            
-            let nextRound = roundGroups[currentRow]
-            if nextRound.startingRound == roundNumber + 1 {
-                nextRound.state = .inProgress
-            }
-            
-            if nextRound.totalRounds > 1 {
-                if let cell = tableView.cellForRow(at: IndexPath(row: currentRow, section: 0)) as? PatternRowTableViewCell {
-                    cell.configure(with: nextRound, roundNumber: roundNumber)
-                }
-            }
+            updateCell(atRow: currentRow) //Updating the current row, or the next row if the current row was completed in the previous line
             
             counter = 0
             tableView.selectRow(at: IndexPath(row: currentRow, section: 0), animated: false, scrollPosition: .none)
@@ -116,6 +105,12 @@ class OctopusPatternViewController: UIViewController {
             frogButton.isUserInteractionEnabled = false
         }
     }
+    
+    private func updateCell(atRow row: Int) {
+        if let cell = tableView.cellForRow(at: IndexPath(row: row, section: 0)) as? PatternRowTableViewCell {
+            cell.configure(with: roundGroups[row], roundNumber: roundNumber)
+        }
+    }
 }
 
 extension OctopusPatternViewController: UITableViewDataSource {
@@ -130,6 +125,7 @@ extension OctopusPatternViewController: UITableViewDataSource {
         }
         
         cell.configure(with: roundGroups[indexPath.row], roundNumber: roundNumber)
+        
         return cell
         
     }
@@ -140,6 +136,8 @@ extension OctopusPatternViewController: UITableViewDataSource {
 extension OctopusPatternViewController: UITableViewDelegate {
     
     func tableView(_ tableView: UITableView, accessoryButtonTappedForRowWith indexPath: IndexPath) {
-        print("")
+        print("b")
+       // performSegue(withIdentifier: "notesDetails", sender: nil)
+        
     }
 }
