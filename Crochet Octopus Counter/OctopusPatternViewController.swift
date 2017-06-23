@@ -19,11 +19,14 @@ class OctopusPatternViewController: UIViewController {
     var counter = 0 {
         didSet {
             counterButtonLabel.setTitle("\(counter)", for: .normal)
+            saveState()
         }
     }
     var currentRow = 0
     var roundNumber = 0
     var indexOfTappedInfoButton = 0
+    let kCounterKey = "kCounterKey"
+    let kRoundNumberKey = "kRoundNumberKey"
     let roundGroups = [
         RoundGroup(text: "Rnd 1: 6 sc in Magic Ring, mark beginning of each round with stitch marker (6 sts)", stitchesPerRound: 6, totalRounds: 1, startingRound: 1),
         RoundGroup(text: "Rnd 2: 2sc in each sc around (12 sts)", stitchesPerRound: 12, totalRounds: 1, startingRound: 2),
@@ -65,9 +68,9 @@ class OctopusPatternViewController: UIViewController {
         
         tableViewHeightConstraint.constant = (view.frame.size.height - frogButton.frame.size.height)/2
         
-        counter = 0
         frogButton.imageView?.contentMode = .scaleAspectFit
         
+        loadState()
     }
     
     
@@ -123,6 +126,24 @@ class OctopusPatternViewController: UIViewController {
         }
     }
     
+    private func saveState() {
+        let defaults = UserDefaults.standard
+        
+        defaults.set(counter, forKey: kCounterKey)
+        defaults.set(roundNumber, forKey: kRoundNumberKey)
+    }
+    
+    private func loadState() {
+        let defaults = UserDefaults.standard
+        
+        counter = defaults.integer(forKey: kCounterKey)
+        roundNumber = defaults.integer(forKey: kRoundNumberKey)
+        
+        for round in roundGroups {
+            //round.roundsCompleted = 
+            round.updateState(roundNumber: roundNumber)
+        }
+    }
 }
 
 extension OctopusPatternViewController: UITableViewDataSource {
