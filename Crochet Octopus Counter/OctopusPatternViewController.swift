@@ -23,10 +23,10 @@ class OctopusPatternViewController: UIViewController {
         }
     }
     var currentRow = 0
-    var roundNumber = 0
+    var lastRoundCompleted = 0
     var indexOfTappedInfoButton = 0
     let kCounterKey = "kCounterKey"
-    let kRoundNumberKey = "kRoundNumberKey"
+    let klastRoundCompletedKey = "klastRoundCompletedKey"
     let roundGroups = [
         RoundGroup(text: "Rnd 1: 6 sc in Magic Ring, mark beginning of each round with stitch marker (6 sts)", stitchesPerRound: 6, totalRounds: 1, startingRound: 1),
         RoundGroup(text: "Rnd 2: 2sc in each sc around (12 sts)", stitchesPerRound: 12, totalRounds: 1, startingRound: 2),
@@ -80,9 +80,9 @@ class OctopusPatternViewController: UIViewController {
         
         if counter == currentRound.stitchesPerRound {
             currentRound.roundsCompleted += 1
-            roundNumber += 1
+            lastRoundCompleted += 1
             
-            currentRound.updateState(roundNumber: roundNumber)
+            currentRound.updateState(lastRoundCompleted: lastRoundCompleted)
             
             if currentRound.state == .completed {
                 updateCell(atRow: currentRow)
@@ -112,7 +112,7 @@ class OctopusPatternViewController: UIViewController {
     
     private func updateCell(atRow row: Int) {
         if let cell = tableView.cellForRow(at: IndexPath(row: row, section: 0)) as? PatternRowTableViewCell {
-            cell.configure(with: roundGroups[row], roundNumber: roundNumber)
+            cell.configure(with: roundGroups[row], lastRoundCompleted: lastRoundCompleted)
         }
     }
     
@@ -130,18 +130,30 @@ class OctopusPatternViewController: UIViewController {
         let defaults = UserDefaults.standard
         
         defaults.set(counter, forKey: kCounterKey)
-        defaults.set(roundNumber, forKey: kRoundNumberKey)
+        defaults.set(lastRoundCompleted, forKey: klastRoundCompletedKey)
     }
     
     private func loadState() {
         let defaults = UserDefaults.standard
         
         counter = defaults.integer(forKey: kCounterKey)
-        roundNumber = defaults.integer(forKey: kRoundNumberKey)
+        lastRoundCompleted = defaults.integer(forKey: klastRoundCompletedKey)
         
         for round in roundGroups {
-            //round.roundsCompleted = 
-            round.updateState(roundNumber: roundNumber)
+            if round.startingRound < lastRoundCompleted {
+                round.roundsCompleted = round.totalRounds
+            }
+                
+                //assign roundsCompleted value to in progress
+            else if true {
+                round.roundsCompleted = -1
+            }
+                //assign roundsCompleted value not started
+            else {
+                round.roundsCompleted = -1
+            }
+            
+            round.updateState(lastRoundCompleted: lastRoundCompleted)
         }
     }
 }
@@ -157,7 +169,7 @@ extension OctopusPatternViewController: UITableViewDataSource {
             fatalError("cell should not be nil!")
         }
         
-        cell.configure(with: roundGroups[indexPath.row], roundNumber: roundNumber)
+        cell.configure(with: roundGroups[indexPath.row], lastRoundCompleted: lastRoundCompleted)
         
         return cell
         

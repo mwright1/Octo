@@ -30,7 +30,7 @@ class PatternRowTableViewCell: UITableViewCell {
         checkBoxButton.contentEdgeInsets = UIEdgeInsetsMake(10, 10, 10, 10)
     }
     
-    func configure(with round: RoundGroup, roundNumber: Int) {
+    func configure(with round: RoundGroup, lastRoundCompleted: Int) {
         
         if round.notes != nil {
             accessoryType = .detailButton
@@ -49,7 +49,7 @@ class PatternRowTableViewCell: UITableViewCell {
             roundLabel.text = ""
             
         case .inProgress:
-            roundLabel.text = "Rnd \(roundNumber + 1)"
+            roundLabel.text = "Rnd \(lastRoundCompleted + 1)"
             
         case .notStarted:
             roundLabel.text = ""
