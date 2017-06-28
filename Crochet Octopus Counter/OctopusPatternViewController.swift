@@ -32,7 +32,16 @@ class OctopusPatternViewController: UIViewController {
         RoundGroup(text: "Rnd 3: *1sc in next sc, 2sc in next sc; rep from *, 6 times (18 sts)", stitchesPerRound: 18, totalRounds: 1, startingRound: 3),
         RoundGroup(text: "Rnd 4: *1sc in next 2 sc, 2sc in next sc; rep from *, 6 times (24 sts)", stitchesPerRound: 24, totalRounds: 1, startingRound: 4),
         RoundGroup(text: "Rnd 5: *1sc in next 3 sc, 2sc in next sc; rep from *, 6 times (30 sts)", stitchesPerRound: 30, totalRounds: 1, startingRound: 5),
-        RoundGroup(text: "Rnd 6: *1sc in next 4 sc, 2sc in next sc; rep from *, 6 times (36 sts)", stitchesPerRound: 36, totalRounds: 1, startingRound: 6, notes: "boris"),
+        RoundGroup(text: "Rnd 6: *1sc in next 4 sc, 2sc in next sc; rep from *, 6 times (36 sts)", stitchesPerRound: 36, totalRounds: 1, startingRound: 6, notes: "Note: This is a good point to stop and " +
+            "• check for holes:\n" +
+            "If a standard 3” lollipop stick can be inserted between stitches, then " +
+            "your holes are too big. See Technique Notes above.\n" +
+            "• check for size:\n" +
+            "If your round measures smaller than 1.3 inch (3.5 cm) in diameter at " +
+            "this point, add an additional increase round or two.\n" +
+            "If your round measures larger than 2 inches in diameter at this " +
+            "point, you may need to delete an upcoming round or two so the " +
+            "head doesn’t come out"),
         RoundGroup(text: "Rnds 7-14: Sc in each single crochet around (36 sts)", stitchesPerRound: 36, totalRounds: 8, startingRound: 7, notes: "buddy"),
         RoundGroup(text: "Rnd 15: *1sc in next 4 sc, sc2tog; rep from *, 6 times (30 sts)", stitchesPerRound: 30, totalRounds: 1, startingRound: 15),
         RoundGroup(text: "Rnds 16-17: 1sc in each single crochet around (30 sts)", stitchesPerRound: 30, totalRounds: 2, startingRound: 16),
@@ -111,6 +120,10 @@ class OctopusPatternViewController: UIViewController {
         }
     }
     
+    @IBAction func unwindToPattern(segue:UIStoryboardSegue) {
+    
+    }
+    
     private func updateCell(atRow row: Int) {
         if let cell = tableView.cellForRow(at: IndexPath(row: row, section: 0)) as? PatternRowTableViewCell {
             cell.configure(with: roundGroups[row], lastRoundCompleted: lastRoundCompleted)
@@ -141,12 +154,13 @@ class OctopusPatternViewController: UIViewController {
         lastRoundCompleted = defaults.integer(forKey: klastRoundCompletedKey)
         
         for round in roundGroups {
-            if round.startingRound <= lastRoundCompleted {
-                round.roundsCompleted = round.totalRounds
+            //In-progress:
+            if lastRoundCompleted >= round.startingRound && lastRoundCompleted < round.startingRound + round.totalRounds - 1 {
+                round.roundsCompleted = lastRoundCompleted - round.startingRound + 1
             }
-                //assign roundsCompleted value to in progress
-            else if round.startingRound >= lastRoundCompleted {
-                round.roundsCompleted = 0
+            //Completed:
+            else if lastRoundCompleted >= round.startingRound {
+                round.roundsCompleted = round.totalRounds
             }
             
             round.updateState(lastRoundCompleted: lastRoundCompleted)
