@@ -19,7 +19,6 @@ class OctopusPatternViewController: UIViewController {
     var counter = 0 {
         didSet {
             counterButtonLabel.setTitle("\(counter)", for: .normal)
-            saveState()
         }
     }
     var currentRow = 0
@@ -97,6 +96,8 @@ class OctopusPatternViewController: UIViewController {
         }
         
         frogButton.isUserInteractionEnabled = true
+        
+        saveState()
     }
     
     
@@ -140,21 +141,18 @@ class OctopusPatternViewController: UIViewController {
         lastRoundCompleted = defaults.integer(forKey: klastRoundCompletedKey)
         
         for round in roundGroups {
-            if round.startingRound < lastRoundCompleted {
+            if round.startingRound <= lastRoundCompleted {
                 round.roundsCompleted = round.totalRounds
             }
-                
                 //assign roundsCompleted value to in progress
-            else if true {
-                round.roundsCompleted = -1
-            }
-                //assign roundsCompleted value not started
-            else {
-                round.roundsCompleted = -1
+            else if round.startingRound >= lastRoundCompleted {
+                round.roundsCompleted = 0
             }
             
             round.updateState(lastRoundCompleted: lastRoundCompleted)
         }
+        
+        tableView.reloadData()
     }
 }
 
