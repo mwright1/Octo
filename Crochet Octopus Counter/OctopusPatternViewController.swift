@@ -26,6 +26,7 @@ class OctopusPatternViewController: UIViewController {
     var indexOfTappedInfoButton = 0
     let kCounterKey = "kCounterKey"
     let klastRoundCompletedKey = "klastRoundCompletedKey"
+    let kCurrentRow = "kCurrentRow"
     let roundGroups = [
         RoundGroup(text: "Rnd 1: 6 sc in Magic Ring, mark beginning of each round with stitch marker (6 sts)", stitchesPerRound: 6, totalRounds: 1, startingRound: 1),
         RoundGroup(text: "Rnd 2: 2sc in each sc around (12 sts)", stitchesPerRound: 12, totalRounds: 1, startingRound: 2),
@@ -52,7 +53,15 @@ class OctopusPatternViewController: UIViewController {
             "  head doesn’t come out too tall \n" +
             "  (deleting a few between 7-14 is \n" +
             "  recommended)."),
-        RoundGroup(text: "Rnds 7-14: Sc in each single crochet around (36 sts)", stitchesPerRound: 36, totalRounds: 8, startingRound: 7, notes: "buddy"),
+        RoundGroup(text: "Rnds 7-14: Sc in each single crochet around (36 sts)", stitchesPerRound: 36, totalRounds: 8, startingRound: 7, notes: "Note: this is a good point to stop and \n" +
+            " \n" +
+            "• add embroidered features. \n" +
+            "  Features may not be added after \n" +
+            "  stuffing. \n" +
+            "• add or delete rounds for height \n" +
+            "  correction (head height should be \n" +
+            "  about 1.5” at this point) \n" +
+            "• check again for holes"),
         RoundGroup(text: "Rnd 15: *1sc in next 4 sc, sc2tog; rep from *, 6 times (30 sts)", stitchesPerRound: 30, totalRounds: 1, startingRound: 15),
         RoundGroup(text: "Rnds 16-17: 1sc in each single crochet around (30 sts)", stitchesPerRound: 30, totalRounds: 2, startingRound: 16),
         RoundGroup(text: "Rnd 18: *1sc in next 3 sc, sc2tog; rep from *, 6 times (24 sts)", stitchesPerRound: 24, totalRounds: 1, startingRound: 18),
@@ -155,6 +164,7 @@ class OctopusPatternViewController: UIViewController {
         
         defaults.set(counter, forKey: kCounterKey)
         defaults.set(lastRoundCompleted, forKey: klastRoundCompletedKey)
+        defaults.set(currentRow, forKey: kCurrentRow)
     }
     
     private func loadState() {
@@ -162,6 +172,7 @@ class OctopusPatternViewController: UIViewController {
         
         counter = defaults.integer(forKey: kCounterKey)
         lastRoundCompleted = defaults.integer(forKey: klastRoundCompletedKey)
+        currentRow = defaults.integer(forKey: kCurrentRow)
         
         for round in roundGroups {
             //In-progress:
