@@ -100,6 +100,9 @@ class OctopusPatternViewController: UIViewController {
         tableViewHeightConstraint.constant = (view.frame.size.height - frogButton.frame.size.height)/2
         
         frogButton.imageView?.contentMode = .scaleAspectFit
+        //counterButton.imageEdgeInsets = UIEdgeInsetsMake(60, 100, 60, 100)
+        
+        
         
         loadState()
     }
