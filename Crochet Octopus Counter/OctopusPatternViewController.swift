@@ -27,13 +27,13 @@ class OctopusPatternViewController: UIViewController {
     let kCounterKey = "kCounterKey"
     let klastRoundCompletedKey = "klastRoundCompletedKey"
     let kCurrentRow = "kCurrentRow"
-    let roundGroups = [
+    let roundGroups = [ //[
         RoundGroup(text: "Rnd 1: 6 sc in Magic Ring, mark beginning of each round with stitch marker (6 sts)", stitchesPerRound: 6, totalRounds: 1, startingRound: 1),
         RoundGroup(text: "Rnd 2: 2sc in each sc around (12 sts)", stitchesPerRound: 12, totalRounds: 1, startingRound: 2),
         RoundGroup(text: "Rnd 3: *1sc in next sc, 2sc in next sc; rep from *, 6 times (18 sts)", stitchesPerRound: 18, totalRounds: 1, startingRound: 3),
         RoundGroup(text: "Rnd 4: *1sc in next 2 sc, 2sc in next sc; rep from *, 6 times (24 sts)", stitchesPerRound: 24, totalRounds: 1, startingRound: 4),
         RoundGroup(text: "Rnd 5: *1sc in next 3 sc, 2sc in next sc; rep from *, 6 times (30 sts)", stitchesPerRound: 30, totalRounds: 1, startingRound: 5),
-        RoundGroup(text: "Rnd 6: *1sc in next 4 sc, 2sc in next sc; rep from *, 6 times (36 sts)", stitchesPerRound: 36, totalRounds: 1, startingRound: 6, notes: "Note: This is a good point to stop and \n" +
+        RoundGroup(text: "Rnd 6: *1sc in next 4 sc, 2sc in next sc; rep from *, 6 times (36 sts)", stitchesPerRound: 36, totalRounds: 1, startingRound: 6, notes: "This is a good point to stop and \n" +
             " \n" +
             "• check for holes:\n" +
             "  If a standard 3” lollipop stick can \n" +
@@ -53,7 +53,7 @@ class OctopusPatternViewController: UIViewController {
             "  head doesn’t come out too tall \n" +
             "  (deleting a few between 7-14 is \n" +
             "  recommended)."),
-        RoundGroup(text: "Rnds 7-14: Sc in each single crochet around (36 sts)", stitchesPerRound: 36, totalRounds: 8, startingRound: 7, notes: "Note: this is a good point to stop and \n" +
+        RoundGroup(text: "Rnds 7-14: Sc in each single crochet around (36 sts)", stitchesPerRound: 36, totalRounds: 8, startingRound: 7, notes: "This is a good point to stop and \n" +
             " \n" +
             "• add embroidered features. \n" +
             "  Features may not be added after \n" +
@@ -70,6 +70,12 @@ class OctopusPatternViewController: UIViewController {
         RoundGroup(text: "Rnd 22: 1sc in each single crochet around (18sts)", stitchesPerRound: 18, totalRounds: 1, startingRound: 22),
         RoundGroup(text: "Rnd 23: *1sc in next 7 single crochet, sc2tog; rep from *, 2 times (16 sts)", stitchesPerRound: 16, totalRounds: 1, startingRound: 23),
         RoundGroup(text: "Rnd 24: 1sc in each single crochet around (16 sts)", stitchesPerRound: 16, totalRounds: 1, startingRound: 24)
+//        ],
+//   [
+//     RoundGroup(text: "Rnd 24: 1sc in each single crochet around (16 sts)", stitchesPerRound: 16, totalRounds: 1, startingRound: 24),
+//     RoundGroup(text: "Rnd 24: 1sc in each single crochet around (16 sts)", stitchesPerRound: 16, totalRounds: 1, startingRound: 24)
+//                            
+//        ]
     ]
     
     //        Test data
@@ -84,8 +90,6 @@ class OctopusPatternViewController: UIViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        
-        title = "Octo"
         
         tableView.delegate = self
         tableView.estimatedRowHeight = 66.0
@@ -140,7 +144,7 @@ class OctopusPatternViewController: UIViewController {
     }
     
     @IBAction func unwindToPattern(segue:UIStoryboardSegue) {
-    
+        
     }
     
     private func updateCell(atRow row: Int) {
@@ -179,7 +183,7 @@ class OctopusPatternViewController: UIViewController {
             if lastRoundCompleted >= round.startingRound && lastRoundCompleted < round.startingRound + round.totalRounds - 1 {
                 round.roundsCompleted = lastRoundCompleted - round.startingRound + 1
             }
-            //Completed:
+                //Completed:
             else if lastRoundCompleted >= round.startingRound {
                 round.roundsCompleted = round.totalRounds
             }

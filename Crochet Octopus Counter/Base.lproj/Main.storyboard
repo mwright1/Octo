@@ -122,7 +122,7 @@
                             <constraint firstItem="eZM-mo-ICT" firstAttribute="top" secondItem="cVO-jr-5Rj" secondAttribute="bottom" id="xAc-vH-gtD"/>
                         </constraints>
                     </view>
-                    <navigationItem key="navigationItem" id="yQ6-dl-n79"/>
+                    <navigationItem key="navigationItem" title="Crochet Pattern for OFAP - US" id="yQ6-dl-n79"/>
                     <connections>
                         <outlet property="counterButton" destination="eZM-mo-ICT" id="S9D-AI-WYh"/>
                         <outlet property="counterButtonLabel" destination="eZM-mo-ICT" id="JiD-0s-D13"/>
@@ -136,7 +136,7 @@
             </objects>
             <point key="canvasLocation" x="1443.4782608695652" y="-520.92391304347825"/>
         </scene>
-        <!--Info Details View Controller-->
+        <!--Note-->
         <scene sceneID="3Uz-iS-u6V">
             <objects>
                 <viewController storyboardIdentifier="notesDetails" automaticallyAdjustsScrollViewInsets="NO" modalPresentationStyle="overCurrentContext" id="A6o-8G-Er8" customClass="InfoDetailsViewController" customModule="Crochet_Octopus_Counter" customModuleProvider="target" sceneMemberID="viewController">
@@ -151,7 +151,7 @@
                             <textView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" editable="NO" selectable="NO" translatesAutoresizingMaskIntoConstraints="NO" id="stK-MW-vHG">
                                 <rect key="frame" x="20" y="64" width="374" height="672"/>
                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
-                                <mutableString key="text">Lorem ipsum dolor sit er elit lamet, consectetaur cillium adipisicing pecu, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum. Nam liber te conscient to factor tum poen legum odioque civiuda.</mutableString>
+                                <string key="text">Lorem ipsum dolor sit er elit lamet, consectetaur cillium adipisicing pecu, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum. Nam liber te conscient to factor tum poen legum odioque civiuda.</string>
                                 <color key="textColor" red="0.28929687500000001" green="0.28929687500000001" blue="0.28929687500000001" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                 <fontDescription key="fontDescription" name="HelveticaNeue" family="Helvetica Neue" pointSize="17"/>
                                 <textInputTraits key="textInputTraits" autocapitalizationType="sentences"/>
@@ -165,7 +165,7 @@
                             <constraint firstItem="stK-MW-vHG" firstAttribute="leading" secondItem="lPB-oM-c1e" secondAttribute="leadingMargin" id="fmk-z3-FgF"/>
                         </constraints>
                     </view>
-                    <navigationItem key="navigationItem" id="aGS-iU-4Zk">
+                    <navigationItem key="navigationItem" title="Note" id="aGS-iU-4Zk">
                         <barButtonItem key="rightBarButtonItem" systemItem="done" id="Yr8-aN-p1M">
                             <connections>
                                 <segue destination="f9i-WI-Pc3" kind="unwind" unwindAction="unwindToPatternWithSegue:" id="rYc-5n-kS5"/>
@@ -200,10 +200,10 @@
             </objects>
             <point key="canvasLocation" x="642" y="-519"/>
         </scene>
-        <!--Navigation Controller-->
+        <!--Note-->
         <scene sceneID="4Rb-4C-u7R">
             <objects>
-                <navigationController automaticallyAdjustsScrollViewInsets="NO" id="4Nj-2c-Fqm" sceneMemberID="viewController">
+                <navigationController title="Note" automaticallyAdjustsScrollViewInsets="NO" id="4Nj-2c-Fqm" sceneMemberID="viewController">
                     <toolbarItems/>
                     <navigationBar key="navigationBar" contentMode="scaleToFill" id="Psg-ra-UCH">
                         <rect key="frame" x="0.0" y="0.0" width="375" height="44"/>
