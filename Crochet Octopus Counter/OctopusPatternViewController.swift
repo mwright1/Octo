@@ -19,6 +19,7 @@ class OctopusPatternViewController: UIViewController {
     var counter = 0 {
         didSet {
             counterButtonLabel.setTitle("\(counter)", for: .normal)
+            counterButtonLabel.contentEdgeInsets = UIEdgeInsetsMake(90, 150, 90, 60)
         }
     }
     var currentRow = 0
@@ -100,9 +101,6 @@ class OctopusPatternViewController: UIViewController {
         tableViewHeightConstraint.constant = (view.frame.size.height - frogButton.frame.size.height)/2
         
         frogButton.imageView?.contentMode = .scaleAspectFit
-        //counterButton.imageEdgeInsets = UIEdgeInsetsMake(60, 100, 60, 100)
-        
-        
         
         loadState()
     }

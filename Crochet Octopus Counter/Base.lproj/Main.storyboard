@@ -89,13 +89,21 @@
                             </tableView>
                             <button opaque="NO" contentMode="scaleAspectFit" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="eZM-mo-ICT">
                                 <rect key="frame" x="0.0" y="64" width="414" height="662"/>
-                                <state key="normal" image="Underwater">
-                                    <color key="titleColor" red="0.0" green="0.50196081400000003" blue="0.50196081400000003" alpha="1" colorSpace="calibratedRGB"/>
+                                <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
+                                <fontDescription key="fontDescription" name="HelveticaNeue" family="Helvetica Neue" pointSize="60"/>
+                                <color key="tintColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
+                                <state key="normal" backgroundImage="Underwater">
+                                    <color key="titleColor" red="1" green="0.25261455282296219" blue="0.33744975480765538" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                 </state>
                                 <connections>
                                     <action selector="counterButtonTapped:" destination="BYZ-38-t0r" eventType="touchUpInside" id="F1Z-CC-u0r"/>
                                 </connections>
                             </button>
+                            <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="octopus" translatesAutoresizingMaskIntoConstraints="NO" id="2d7-cB-eP6">
+                                <rect key="frame" x="90" y="124" width="166" height="517"/>
+                                <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
+                                <color key="tintColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
+                            </imageView>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="83N-dk-nYq">
                                 <rect key="frame" x="20" y="691" width="374" height="40"/>
                                 <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
@@ -113,12 +121,16 @@
                             <constraint firstItem="eZM-mo-ICT" firstAttribute="leading" secondItem="8bC-Xf-vdC" secondAttribute="leading" id="1RG-4U-5s5"/>
                             <constraint firstItem="wfy-db-euE" firstAttribute="top" secondItem="83N-dk-nYq" secondAttribute="bottom" constant="5" id="BhW-rf-6OP"/>
                             <constraint firstItem="cVO-jr-5Rj" firstAttribute="top" secondItem="y3c-jy-aDJ" secondAttribute="bottom" id="F2f-Oe-aHK"/>
+                            <constraint firstItem="2d7-cB-eP6" firstAttribute="top" secondItem="eZM-mo-ICT" secondAttribute="top" constant="60" id="KGN-8S-rpr"/>
                             <constraint firstAttribute="trailingMargin" secondItem="83N-dk-nYq" secondAttribute="trailing" id="KWg-gS-47L"/>
                             <constraint firstItem="cVO-jr-5Rj" firstAttribute="leading" secondItem="8bC-Xf-vdC" secondAttribute="leading" id="MeI-H0-Wdz"/>
+                            <constraint firstItem="83N-dk-nYq" firstAttribute="top" secondItem="2d7-cB-eP6" secondAttribute="bottom" constant="50" id="MzC-0x-wG8"/>
                             <constraint firstAttribute="trailing" secondItem="eZM-mo-ICT" secondAttribute="trailing" id="YYo-c0-Wfj"/>
                             <constraint firstItem="wfy-db-euE" firstAttribute="top" secondItem="eZM-mo-ICT" secondAttribute="bottom" constant="10" id="byZ-IS-h0o"/>
                             <constraint firstItem="83N-dk-nYq" firstAttribute="leading" secondItem="8bC-Xf-vdC" secondAttribute="leadingMargin" id="cr9-2T-IlR"/>
+                            <constraint firstAttribute="trailingMargin" secondItem="2d7-cB-eP6" secondAttribute="trailing" constant="138" id="mVC-Ir-4fv"/>
                             <constraint firstAttribute="trailing" secondItem="cVO-jr-5Rj" secondAttribute="trailing" id="pSr-4a-xxs"/>
+                            <constraint firstItem="2d7-cB-eP6" firstAttribute="leading" secondItem="8bC-Xf-vdC" secondAttribute="leadingMargin" constant="70" id="tlF-aA-QV1"/>
                             <constraint firstItem="eZM-mo-ICT" firstAttribute="top" secondItem="cVO-jr-5Rj" secondAttribute="bottom" id="xAc-vH-gtD"/>
                         </constraints>
                     </view>
@@ -223,6 +235,7 @@
         <image name="Underwater" width="781" height="647"/>
         <image name="checkedButton.png" width="208" height="211"/>
         <image name="frogButton" width="301" height="295"/>
+        <image name="octopus" width="744" height="1052"/>
         <image name="uncheckedButton.png" width="158" height="163"/>
     </resources>
 </document>
