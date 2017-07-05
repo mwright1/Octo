@@ -243,32 +243,45 @@ extension OctopusPatternViewController: UITableViewDelegate {
     }
     
     func tableView(_ tableView: UITableView, viewForHeaderInSection section: Int) -> UIView? {
-        let headerLabel:UILabel = UILabel()
-        headerLabel.backgroundColor = .white
-        headerLabel.textAlignment = NSTextAlignment.center
-        headerLabel.textColor = .darkGray
-        headerLabel.font = UIFont.boldSystemFont(ofSize: 18)
         
+        let headerView = UIView(frame: CGRect(x: 0, y: 0, width: 200, height: 100))
+        headerView.backgroundColor = .white
+        
+        let headerLabel1 = UILabel(frame: CGRect(x: 10, y: 0, width: 300, height: 50))
+        headerLabel1.textAlignment = NSTextAlignment.center
+        headerLabel1.font = UIFont.boldSystemFont(ofSize: 18)
+        headerLabel1.textColor = .darkGray
+        
+        headerView.addSubview(headerLabel1)
+        
+        let headerLabel2 = UILabel(frame: CGRect(x: 10, y: 0, width: 280, height: 250))
+        headerLabel2.textAlignment = NSTextAlignment.natural
+        headerLabel2.textColor = .darkGray
+        headerLabel2.font = UIFont.systemFont(ofSize: 14)
+        headerLabel2.lineBreakMode = .byWordWrapping
+        headerLabel2.numberOfLines = 0
+        headerView.addSubview(headerLabel2)
         
         if section == 0 {
-            headerLabel.text = "Octopus Head (Body)"
+            headerLabel1.text = "Octopus Head (Body)"
         }
         else {
-            headerLabel.text = "Bottom of Octopus \n" +
-                "The bottom of the octopus is a separate piece, that will “cap” the end of the \n" +
-                "octopus’ head, holding in the stuffing. It can be created with a second, \n" +
-                "contrasting color of yarn, so that the head yarn does not need to be cut. You will \n" +
+            headerLabel1.text = "Bottom of Octopus"
+            headerLabel2.text =
+                "The bottom of the octopus is a separate piece, that will “cap” the end of the" +
+                "octopus’ head, holding in the stuffing. It can be created with a second," +
+                "contrasting color of yarn, so that the head yarn does not need to be cut. You will" +
             "be picking the head yarn back up to attach the bottom piece."
         }
-        return headerLabel
+        return headerView
     }
     
     func tableView(_ tableView: UITableView, heightForHeaderInSection section: Int) -> CGFloat {
         if section == 0 {
-            return 44
+            return 30
         }
         else {
-            return 180
+            return 200
         }
     }
 }
