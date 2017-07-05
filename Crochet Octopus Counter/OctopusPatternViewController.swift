@@ -28,7 +28,7 @@ class OctopusPatternViewController: UIViewController {
     let kCounterKey = "kCounterKey"
     let klastRoundCompletedKey = "klastRoundCompletedKey"
     let kCurrentRow = "kCurrentRow"
-    let roundGroups = [ //[
+    let roundGroups = [
         RoundGroup(text: "Rnd 1: 6 sc in Magic Ring, mark beginning of each round with stitch marker (6 sts)", stitchesPerRound: 6, totalRounds: 1, startingRound: 1),
         RoundGroup(text: "Rnd 2: 2sc in each sc around (12 sts)", stitchesPerRound: 12, totalRounds: 1, startingRound: 2),
         RoundGroup(text: "Rnd 3: *1sc in next sc, 2sc in next sc; rep from *, 6 times (18 sts)", stitchesPerRound: 18, totalRounds: 1, startingRound: 3),
@@ -71,12 +71,13 @@ class OctopusPatternViewController: UIViewController {
         RoundGroup(text: "Rnd 22: 1sc in each single crochet around (18sts)", stitchesPerRound: 18, totalRounds: 1, startingRound: 22),
         RoundGroup(text: "Rnd 23: *1sc in next 7 single crochet, sc2tog; rep from *, 2 times (16 sts)", stitchesPerRound: 16, totalRounds: 1, startingRound: 23),
         RoundGroup(text: "Rnd 24: 1sc in each single crochet around (16 sts)", stitchesPerRound: 16, totalRounds: 1, startingRound: 24)
-//        ],
-//   [
-//     RoundGroup(text: "Rnd 24: 1sc in each single crochet around (16 sts)", stitchesPerRound: 16, totalRounds: 1, startingRound: 24),
-//     RoundGroup(text: "Rnd 24: 1sc in each single crochet around (16 sts)", stitchesPerRound: 16, totalRounds: 1, startingRound: 24)
-//                            
-//        ]
+        
+        
+    ]
+    
+    let bottomRoundGroups = [
+        RoundGroup(text: "Rnd 24: 1sc in each single crochet around (16 sts)", stitchesPerRound: 16, totalRounds: 1, startingRound: 1),
+        RoundGroup(text: "Rnd 24: 1sc in each single crochet around (16 sts)", stitchesPerRound: 16, totalRounds: 1, startingRound: 2)
     ]
     
     //        Test data
@@ -101,6 +102,11 @@ class OctopusPatternViewController: UIViewController {
         tableViewHeightConstraint.constant = (view.frame.size.height - frogButton.frame.size.height)/2
         
         frogButton.imageView?.contentMode = .scaleAspectFit
+        
+        let stringAttributed = NSMutableAttributedString.init(string: "The bottom of the octopus is a separate piece, that will “cap” the end of the \n" +
+            "octopus’ head, holding in the stuffing. It can be created with a second, \n" +
+            "contrasting color of yarn, so that the head yarn does not need to be cut. You will \n" +
+            "be picking the head yarn back up to attach the bottom piece.")
         
         loadState()
     }
@@ -197,8 +203,17 @@ class OctopusPatternViewController: UIViewController {
 }
 
 extension OctopusPatternViewController: UITableViewDataSource {
+    func numberOfSections(in tableView: UITableView) -> Int {
+        return 2
+    }
+    
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        return roundGroups.count
+        if section == 0 {
+            return roundGroups.count
+        }
+        else {
+            return bottomRoundGroups.count
+        }
     }
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
@@ -206,11 +221,14 @@ extension OctopusPatternViewController: UITableViewDataSource {
         guard let cell = tableView.dequeueReusableCell(withIdentifier: "PatternRowTableViewCell", for: indexPath) as? PatternRowTableViewCell else {
             fatalError("cell should not be nil!")
         }
-        
-        cell.configure(with: roundGroups[indexPath.row], lastRoundCompleted: lastRoundCompleted)
+        if indexPath.section == 0 {
+            cell.configure(with: roundGroups[indexPath.row], lastRoundCompleted: lastRoundCompleted)
+        }
+        else {
+            cell.configure(with: bottomRoundGroups[indexPath.row], lastRoundCompleted: lastRoundCompleted)
+        }
         
         return cell
-        
     }
     
     
@@ -222,6 +240,36 @@ extension OctopusPatternViewController: UITableViewDelegate {
         self.indexOfTappedInfoButton = indexPath.row
         performSegue(withIdentifier: "showsInfoDetails", sender: nil)
         
+    }
+    
+    func tableView(_ tableView: UITableView, viewForHeaderInSection section: Int) -> UIView? {
+        let headerLabel:UILabel = UILabel()
+        headerLabel.backgroundColor = .white
+        headerLabel.textAlignment = NSTextAlignment.center
+        headerLabel.textColor = .darkGray
+        headerLabel.font = UIFont.boldSystemFont(ofSize: 18)
+        
+        
+        if section == 0 {
+            headerLabel.text = "Octopus Head (Body)"
+        }
+        else {
+            headerLabel.text = "Bottom of Octopus \n" +
+                "The bottom of the octopus is a separate piece, that will “cap” the end of the \n" +
+                "octopus’ head, holding in the stuffing. It can be created with a second, \n" +
+                "contrasting color of yarn, so that the head yarn does not need to be cut. You will \n" +
+            "be picking the head yarn back up to attach the bottom piece."
+        }
+        return headerLabel
+    }
+    
+    func tableView(_ tableView: UITableView, heightForHeaderInSection section: Int) -> CGFloat {
+        if section == 0 {
+            return 44
+        }
+        else {
+            return 180
+        }
     }
 }
 
