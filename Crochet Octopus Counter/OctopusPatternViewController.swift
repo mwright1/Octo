@@ -34,34 +34,20 @@ class OctopusPatternViewController: UIViewController {
         RoundGroup(text: "Rnd 3: *1sc in next sc, 2sc in next sc; rep from *, 6 times (18 sts)", stitchesPerRound: 18, totalRounds: 1, startingRound: 3),
         RoundGroup(text: "Rnd 4: *1sc in next 2 sc, 2sc in next sc; rep from *, 6 times (24 sts)", stitchesPerRound: 24, totalRounds: 1, startingRound: 4),
         RoundGroup(text: "Rnd 5: *1sc in next 3 sc, 2sc in next sc; rep from *, 6 times (30 sts)", stitchesPerRound: 30, totalRounds: 1, startingRound: 5),
-        RoundGroup(text: "Rnd 6: *1sc in next 4 sc, 2sc in next sc; rep from *, 6 times (36 sts)", stitchesPerRound: 36, totalRounds: 1, startingRound: 6, notes: "This is a good point to stop and \n" +
+        RoundGroup(text: "Rnd 6: *1sc in next 4 sc, 2sc in next sc; rep from *, 6 times (36 sts)", stitchesPerRound: 36, totalRounds: 1, startingRound: 6, notes: "\nThis is a good point to stop and \n" +
             " \n" +
             "• check for holes:\n" +
-            "  If a standard 3” lollipop stick can \n" +
-            "  be inserted between stitches, then \n" +
-            "  your holes are too big. See \n" +
-            "  Technique Notes above. \n" +
+            "If a standard 3” lollipop stick can be inserted between stitches, then your holes are too big. See Technique Notes above. \n" +
             " \n" +
             "• check for size:\n" +
-            "  If your round measures smaller \n" +
-            "  than 1.3 inch (3.5 cm) in diameter \n" +
-            "  at this point, add an additional \n" +
-            "  increase round or two. If your \n" +
-            "  round measures larger than 2 \n " +
-            " inches in diameter at this point, \n " +
-            " you may need to delete an \n" +
-            "  upcoming round or two so the \n" +
-            "  head doesn’t come out too tall \n" +
-            "  (deleting a few between 7-14 is \n" +
-            "  recommended)."),
-        RoundGroup(text: "Rnds 7-14: Sc in each single crochet around (36 sts)", stitchesPerRound: 36, totalRounds: 8, startingRound: 7, notes: "This is a good point to stop and \n" +
+            "If your round measures smaller than 1.3 inch (3.5 cm) in diameter at this point, add an additional increase round or two. If your round measures larger than 2 inches in diameter at this point, " +
+            "you may need to delete an upcoming round or two so the head doesn’t come out too tall (deleting a few between 7-14 is recommended)."),
+        RoundGroup(text: "Rnds 7-14: Sc in each single crochet around (36 sts)", stitchesPerRound: 36, totalRounds: 8, startingRound: 7, notes: "\nThis is a good point to stop and \n" +
             " \n" +
-            "• add embroidered features. \n" +
-            "  Features may not be added after \n" +
-            "  stuffing. \n" +
-            "• add or delete rounds for height \n" +
-            "  correction (head height should be \n" +
-            "  about 1.5” at this point) \n" +
+            "• add embroidered features. Features may not be added after stuffing. \n" +
+            "\n" +
+            "• add or delete rounds for height correction (head height should be about 1.5” at this point) \n" +
+            " \n" +
             "• check again for holes"),
         RoundGroup(text: "Rnd 15: *1sc in next 4 sc, sc2tog; rep from *, 6 times (30 sts)", stitchesPerRound: 30, totalRounds: 1, startingRound: 15),
         RoundGroup(text: "Rnds 16-17: 1sc in each single crochet around (30 sts)", stitchesPerRound: 30, totalRounds: 2, startingRound: 16),
@@ -102,11 +88,6 @@ class OctopusPatternViewController: UIViewController {
         tableViewHeightConstraint.constant = (view.frame.size.height - frogButton.frame.size.height)/2
         
         frogButton.imageView?.contentMode = .scaleAspectFit
-        
-        let stringAttributed = NSMutableAttributedString.init(string: "The bottom of the octopus is a separate piece, that will “cap” the end of the \n" +
-            "octopus’ head, holding in the stuffing. It can be created with a second, \n" +
-            "contrasting color of yarn, so that the head yarn does not need to be cut. You will \n" +
-            "be picking the head yarn back up to attach the bottom piece.")
         
         loadState()
     }
