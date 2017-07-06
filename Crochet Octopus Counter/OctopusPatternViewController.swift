@@ -247,38 +247,42 @@ extension OctopusPatternViewController: UITableViewDelegate {
         let headerView = UIView(frame: CGRect(x: 0, y: 0, width: 200, height: 100))
         headerView.backgroundColor = .white
         
-        let headerLabel1 = UILabel(frame: CGRect(x: 10, y: 0, width: 300, height: 50))
+        let headerLabel1 = UILabel()
+        headerLabel1.translatesAutoresizingMaskIntoConstraints = false
         headerLabel1.textAlignment = NSTextAlignment.center
-        headerLabel1.font = UIFont.boldSystemFont(ofSize: 18)
         headerLabel1.textColor = .darkGray
-        
+        headerLabel1.font = UIFont.boldSystemFont(ofSize: 18)
         headerView.addSubview(headerLabel1)
         
-        let headerLabel2 = UILabel(frame: CGRect(x: 10, y: 0, width: 280, height: 250))
-        headerLabel2.textAlignment = NSTextAlignment.natural
+        let headerLabel2 = UILabel()
+        headerLabel2.translatesAutoresizingMaskIntoConstraints = false
+        headerLabel2.textAlignment = NSTextAlignment.left
         headerLabel2.textColor = .darkGray
-        headerLabel2.font = UIFont.systemFont(ofSize: 14)
+        headerLabel2.font = UIFont.systemFont(ofSize: 16)
         headerLabel2.lineBreakMode = .byWordWrapping
         headerLabel2.numberOfLines = 0
         headerView.addSubview(headerLabel2)
+        
+        NSLayoutConstraint.activate(NSLayoutConstraint.constraints(withVisualFormat: "H:|-(10)-[headerLabel1]-(10)-|", options: [], metrics: nil, views: ["headerLabel1":headerLabel1]))
+        NSLayoutConstraint.activate(NSLayoutConstraint.constraints(withVisualFormat: "H:|-(20)-[headerLabel2]-(10)-|", options: [], metrics: nil, views: ["headerLabel2":headerLabel2]))
+        NSLayoutConstraint.activate(NSLayoutConstraint.constraints(withVisualFormat: "V:|-(5)-[headerLabel1]-(0)-[headerLabel2]-(5)-|", options: [], metrics: nil, views: ["headerLabel1":headerLabel1, "headerLabel2":headerLabel2]))
         
         if section == 0 {
             headerLabel1.text = "Octopus Head (Body)"
         }
         else {
             headerLabel1.text = "Bottom of Octopus"
-            headerLabel2.text =
-                "The bottom of the octopus is a separate piece, that will “cap” the end of the" +
-                "octopus’ head, holding in the stuffing. It can be created with a second," +
-                "contrasting color of yarn, so that the head yarn does not need to be cut. You will" +
-            "be picking the head yarn back up to attach the bottom piece."
+            headerLabel2.text = "The bottom of the octopus is a separate piece, that will “cap” the end of the " +
+                "octopus’ head, holding in the stuffing. It can be created with a second, " +
+                "contrasting color of yarn, so that the head yarn does not need to be cut. You will " +
+                "be picking the head yarn back up to attach the bottom piece."
         }
         return headerView
     }
     
     func tableView(_ tableView: UITableView, heightForHeaderInSection section: Int) -> CGFloat {
         if section == 0 {
-            return 30
+            return 44
         }
         else {
             return 200
