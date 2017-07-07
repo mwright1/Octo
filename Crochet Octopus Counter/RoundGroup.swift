@@ -32,11 +32,11 @@ class RoundGroup {
         self.notes = notes
     }
     
-    func updateState(lastRoundCompleted: Int) {
+    func updateState(lastRoundCompleted: Int, shouldAutoStart: Bool) {
         if roundsCompleted == totalRounds {
             state = .completed
         }
-        else if (roundsCompleted != 0 && roundsCompleted != totalRounds && totalRounds > 1)  || startingRound == lastRoundCompleted + 1 {
+        else if (roundsCompleted != 0 && roundsCompleted != totalRounds && totalRounds > 1)  || (startingRound == lastRoundCompleted + 1 && shouldAutoStart) {
             state = .inProgress
         }
         else if roundsCompleted == 0 {

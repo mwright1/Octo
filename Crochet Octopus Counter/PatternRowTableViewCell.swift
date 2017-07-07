@@ -49,7 +49,12 @@ class PatternRowTableViewCell: UITableViewCell {
             roundLabel.text = ""
             
         case .inProgress:
-            roundLabel.text = "Rnd \(lastRoundCompleted + 1)"
+            if round.totalRounds > 1 {
+                roundLabel.text = "Rnd \(lastRoundCompleted + 1)"
+            }
+            else {
+                roundLabel.text = ""
+            }
             
         case .notStarted:
             roundLabel.text = ""

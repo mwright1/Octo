@@ -8,7 +8,6 @@
 
 import UIKit
 
-
 class OctopusPatternViewController: UIViewController {
     @IBOutlet weak var counterButton: UIButton!
     @IBOutlet weak var counterButtonLabel: UIButton!
@@ -22,12 +21,16 @@ class OctopusPatternViewController: UIViewController {
             counterButtonLabel.contentEdgeInsets = UIEdgeInsetsMake(90, 150, 90, 60)
         }
     }
+    
     var currentRow = 0
+    var currentSection = 0
     var lastRoundCompleted = 0
+    var lastRoundCompletedForBottom = 0
     var indexOfTappedInfoButton = 0
     let kCounterKey = "kCounterKey"
     let klastRoundCompletedKey = "klastRoundCompletedKey"
     let kCurrentRow = "kCurrentRow"
+    let kCurrentSection = "kCurrentSection"
     let roundGroups = [
         RoundGroup(text: "Rnd 1: 6 sc in Magic Ring, mark beginning of each round with stitch marker (6 sts)", stitchesPerRound: 6, totalRounds: 1, startingRound: 1),
         RoundGroup(text: "Rnd 2: 2sc in each sc around (12 sts)", stitchesPerRound: 12, totalRounds: 1, startingRound: 2),
@@ -57,24 +60,12 @@ class OctopusPatternViewController: UIViewController {
         RoundGroup(text: "Rnd 22: 1sc in each single crochet around (18sts)", stitchesPerRound: 18, totalRounds: 1, startingRound: 22),
         RoundGroup(text: "Rnd 23: *1sc in next 7 single crochet, sc2tog; rep from *, 2 times (16 sts)", stitchesPerRound: 16, totalRounds: 1, startingRound: 23),
         RoundGroup(text: "Rnd 24: 1sc in each single crochet around (16 sts)", stitchesPerRound: 16, totalRounds: 1, startingRound: 24)
-        
-        
     ]
     
     let bottomRoundGroups = [
-        RoundGroup(text: "Rnd 24: 1sc in each single crochet around (16 sts)", stitchesPerRound: 16, totalRounds: 1, startingRound: 1),
-        RoundGroup(text: "Rnd 24: 1sc in each single crochet around (16 sts)", stitchesPerRound: 16, totalRounds: 1, startingRound: 2)
+        RoundGroup(text: "Rnd 1: 1sc in each single crochet around (16 sts)", stitchesPerRound: 16, totalRounds: 1, startingRound: 1),
+        RoundGroup(text: "Rnd 2: 1sc in each single crochet around (16 sts)", stitchesPerRound: 16, totalRounds: 1, startingRound: 2)
     ]
-    
-    //        Test data
-    //    let roundGroups = [
-    //        RoundGroup(text: "Rnd 1: 6 sc in Magic Ring, mark beginning of each round with stitch marker (6 sts)", stitchesPerRound: 2, totalRounds: 1, startingRound: 1),
-    //        RoundGroup(text: "2sc in each sc around (12 sts)", stitchesPerRound: 2, totalRounds: 3, startingRound: 2),
-    //        RoundGroup(text: "*1sc in next sc, 2sc in next sc; rep from *, 6 times (18 sts)", stitchesPerRound: 4, totalRounds: 2, startingRound: 3),
-    //        RoundGroup(text: "*1sc in next 2 sc, 2sc in next sc; rep from *, 6 times (24 sts)", stitchesPerRound: 4, totalRounds: 2, startingRound: 4),
-    //        RoundGroup(text: "*1sc in next 3 sc, 2sc in next sc; rep from *, 6 times (30 sts)", stitchesPerRound: 6, totalRounds: 1, startingRound: 5),
-    //        RoundGroup(text: "*1sc in next 4 sc, 2sc in next sc; rep from *, 6 times (36 sts)", stitchesPerRound: 6, totalRounds: 1, startingRound: 6),
-    //        ]
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -83,7 +74,7 @@ class OctopusPatternViewController: UIViewController {
         tableView.estimatedRowHeight = 66.0
         tableView.rowHeight = UITableViewAutomaticDimension
         
-        tableView.selectRow(at: IndexPath(row: currentRow, section: 0), animated: false, scrollPosition: .none)
+        tableView.selectRow(at: IndexPath(row: currentRow, section: currentSection), animated: false, scrollPosition: .none)
         
         tableViewHeightConstraint.constant = (view.frame.size.height - frogButton.frame.size.height)/2
         
@@ -95,22 +86,33 @@ class OctopusPatternViewController: UIViewController {
     
     @IBAction func counterButtonTapped(_ sender: UIButton) {
         counter += 1
-        let currentRound = roundGroups[currentRow]
+        let currentRoundGroup = currentSection == 0 ? roundGroups[currentRow] : bottomRoundGroups[currentRow]
         
-        if counter == currentRound.stitchesPerRound {
-            currentRound.roundsCompleted += 1
-            lastRoundCompleted += 1
-            
-            currentRound.updateState(lastRoundCompleted: lastRoundCompleted)
-            
-            if currentRound.state == .completed {
-                updateCell(atRow: currentRow)
-                currentRow += 1
+        if counter == currentRoundGroup.stitchesPerRound {
+            currentRoundGroup.roundsCompleted += 1
+            if currentSection == 0 {
+                lastRoundCompleted += 1
             }
-            updateCell(atRow: currentRow) //Updating the current row, or the next row if the current row was completed in the previous line
+            else {
+                lastRoundCompletedForBottom += 1
+            }
+            
+            let lastRoundCompletedForCurrentSection = currentSection == 0 ? lastRoundCompleted : lastRoundCompletedForBottom
+            currentRoundGroup.updateState(lastRoundCompleted: lastRoundCompletedForCurrentSection, shouldAutoStart: false)
+            
+            if currentRoundGroup.state == .completed {
+                updateCell(atRow: currentRow, atSection: currentSection)
+                currentRow += 1
+                if currentSection == 0 && currentRow >= roundGroups.count {
+                    currentRow = 0
+                    currentSection = 1
+                }
+                
+            }
+            updateCell(atRow: currentRow, atSection: currentSection) //Updating the current row, or the next row if the current row was completed in the previous line
             
             counter = 0
-            tableView.selectRow(at: IndexPath(row: currentRow, section: 0), animated: false, scrollPosition: .none)
+            tableView.selectRow(at: IndexPath(row: currentRow, section: currentSection), animated: false, scrollPosition: .none)
             tableView.scrollToNearestSelectedRow(at: UITableViewScrollPosition.middle, animated: true)
             frogButton.isUserInteractionEnabled = true
         }
@@ -125,18 +127,24 @@ class OctopusPatternViewController: UIViewController {
         if counter >= 1 {
             counter -= 1
         }
+        else if currentSection == 1 {
+            currentSection = 0
+            counter = roundGroups.count - 1
+        }
         
         if counter == 0 {
             frogButton.isUserInteractionEnabled = false
         }
+        
+        tableView.reloadData() //TODO: select the different row
     }
     
     @IBAction func unwindToPattern(segue:UIStoryboardSegue) {
         
     }
     
-    private func updateCell(atRow row: Int) {
-        if let cell = tableView.cellForRow(at: IndexPath(row: row, section: 0)) as? PatternRowTableViewCell {
+    private func updateCell(atRow row: Int, atSection section: Int) {
+        if let cell = tableView.cellForRow(at: IndexPath(row: row, section: section)) as? PatternRowTableViewCell {
             cell.configure(with: roundGroups[row], lastRoundCompleted: lastRoundCompleted)
         }
     }
@@ -146,7 +154,12 @@ class OctopusPatternViewController: UIViewController {
         super.prepare(for: segue, sender: nil)
         if segue.identifier == "showsInfoDetails", let nc = segue.destination as? UINavigationController {
             if let vc = nc.topViewController as? InfoDetailsViewController {
-                vc.notes = roundGroups[self.indexOfTappedInfoButton].notes
+                if currentSection == 0 {
+                    vc.notes = roundGroups[self.indexOfTappedInfoButton].notes
+                }
+                else {
+                    vc.notes = bottomRoundGroups[self.indexOfTappedInfoButton].notes
+                }
             }
         }
     }
@@ -157,6 +170,7 @@ class OctopusPatternViewController: UIViewController {
         defaults.set(counter, forKey: kCounterKey)
         defaults.set(lastRoundCompleted, forKey: klastRoundCompletedKey)
         defaults.set(currentRow, forKey: kCurrentRow)
+        defaults.set(currentSection, forKey: kCurrentSection)
     }
     
     private func loadState() {
@@ -165,6 +179,7 @@ class OctopusPatternViewController: UIViewController {
         counter = defaults.integer(forKey: kCounterKey)
         lastRoundCompleted = defaults.integer(forKey: klastRoundCompletedKey)
         currentRow = defaults.integer(forKey: kCurrentRow)
+        currentSection = defaults.integer(forKey: kCurrentSection)
         
         for round in roundGroups {
             //In-progress:
@@ -176,7 +191,20 @@ class OctopusPatternViewController: UIViewController {
                 round.roundsCompleted = round.totalRounds
             }
             
-            round.updateState(lastRoundCompleted: lastRoundCompleted)
+            round.updateState(lastRoundCompleted: lastRoundCompleted, shouldAutoStart: true)
+        }
+        
+        for round in bottomRoundGroups {
+            //In-progress:
+            if lastRoundCompletedForBottom >= round.startingRound && lastRoundCompletedForBottom < round.startingRound + round.totalRounds - 1 {
+                round.roundsCompleted = lastRoundCompletedForBottom - round.startingRound + 1
+            }
+                //Completed:
+            else if lastRoundCompletedForBottom >= round.startingRound {
+                round.roundsCompleted = round.totalRounds
+            }
+            
+            round.updateState(lastRoundCompleted: lastRoundCompletedForBottom, shouldAutoStart: false)
         }
         
         tableView.reloadData()
@@ -206,7 +234,7 @@ extension OctopusPatternViewController: UITableViewDataSource {
             cell.configure(with: roundGroups[indexPath.row], lastRoundCompleted: lastRoundCompleted)
         }
         else {
-            cell.configure(with: bottomRoundGroups[indexPath.row], lastRoundCompleted: lastRoundCompleted)
+            cell.configure(with: bottomRoundGroups[indexPath.row], lastRoundCompleted: lastRoundCompletedForBottom)
         }
         
         return cell
@@ -258,6 +286,7 @@ extension OctopusPatternViewController: UITableViewDelegate {
                 "contrasting color of yarn, so that the head yarn does not need to be cut. You will " +
                 "be picking the head yarn back up to attach the bottom piece."
         }
+        
         return headerView
     }
     
