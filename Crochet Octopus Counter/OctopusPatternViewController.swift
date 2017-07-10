@@ -67,11 +67,23 @@ class OctopusPatternViewController: UIViewController {
         RoundGroup(text: "Rnd 1: 5sc into Magic Ring (5sts)", stitchesPerRound: 5, totalRounds: 1, startingRound: 1),
         RoundGroup(text: "Rnd 2: 2sc in each sc around (10 sts)", stitchesPerRound: 10, totalRounds: 1, startingRound: 2),
         RoundGroup(text: "Rnd 3: *1sc in next sc, 2sc in next sc; rep from *, 5 times (15 sts)", stitchesPerRound: 15, totalRounds: 1, startingRound: 3, notes: "\nFinish with a slip stitch and cut yarn with " +
-            "a long tail. Using a darning needle, move the yarn tail from the outside of the circle to the middle/back of the circle to join the beginning tail. Tie the tails together securely, then cut the tails short." +
+            "a long tail. Using a darning needle, move the yarn tail from the outside of the circle to the middle/back of the circle to join the beginning tail. Tie the tails together securely, then cut the tails short.\n" +
+            " \n" +
             "Put the bottom of the octopus on the opening of the octopus’ head, lining up the stitches of both pieces. \n" +
+            " \n" +
             "Pick the head yarn loop back up with your hook, and single crochet around the bottom piece and head. Each sc stitch will join the bottom piece and the octopus head together. (16 sts) \n" +
+            " \n" +
             "Continue with Rnd 25 to create the tentacles.")
     ]
+    
+    let tentaclesRoundGroups = [
+        RoundGroup(text: "Rnd 25: *ch 50 (Tightly stretch and measure your chain. Add or subtract chain stitches as needed to obtain a completed, fully stretched tentacle length between 6.3 and 8.5 inches." +
+            "The relaxed/coiled length does not matter. Best practice is to aim for about 7 or 7.5 inches, fully and tightly stretched), sc in 2nd chain from hook, then 2sc (or 3sc) in either the back or bottom" +
+            "loop of each chain stitch until you reach the body. When done with the chain, slip stitch or sc into the next stitch. Sc again in the next sc; repeat from * until you have a tentacle in every" +
+            "other stitch of Rnd 24. Finish with a slip stitch in the same stitch where the first tentacle began, and cut the yarn leaving a long yarn end. Draw the cut end through the last loop and pull tight" +
+            "to fasten off. Weave the finished end into the octopus’ head.", stitchesPerRound: 15, totalRounds: 1, startingRound: 25)
+    ]
+    
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -219,7 +231,7 @@ class OctopusPatternViewController: UIViewController {
 
 extension OctopusPatternViewController: UITableViewDataSource {
     func numberOfSections(in tableView: UITableView) -> Int {
-        return 2
+        return 3
     }
     
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
@@ -239,10 +251,12 @@ extension OctopusPatternViewController: UITableViewDataSource {
         if indexPath.section == 0 {
             cell.configure(with: roundGroups[indexPath.row], lastRoundCompleted: lastRoundCompleted)
         }
-        else {
+        else if indexPath.section == 1 {
             cell.configure(with: bottomRoundGroups[indexPath.row], lastRoundCompleted: lastRoundCompletedForBottom)
         }
-        
+        else {
+            cell.configure(with: tentaclesRoundGroups[indexPath.row], lastRoundCompleted: lastRoundCompleted)
+        }
         return cell
     }
     
@@ -286,23 +300,26 @@ extension OctopusPatternViewController: UITableViewDelegate {
         if section == 0 {
             headerLabel1.text = "Octopus Head (Body)"
         }
-        else {
+        else if section == 1{
             headerLabel1.text = "Bottom of Octopus"
             headerLabel2.text = "The bottom of the octopus is a separate piece, that will “cap” the end of the " +
                 "octopus’ head, holding in the stuffing. It can be created with a second, " +
                 "contrasting color of yarn, so that the head yarn does not need to be cut. You will " +
             "be picking the head yarn back up to attach the bottom piece."
         }
-        
+        else {
+            headerLabel1.text = "Tentacles"
+
+        }
         return headerView
     }
     
     func tableView(_ tableView: UITableView, heightForHeaderInSection section: Int) -> CGFloat {
-        if section == 0 {
-            return 44
+        if section == 1{
+            return 200
         }
         else {
-            return 200
+            return 44
         }
     }
 }
