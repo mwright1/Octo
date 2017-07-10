@@ -27,13 +27,14 @@ class OctopusPatternViewController: UIViewController {
     var lastRoundCompleted = 0
     var lastRoundCompletedForBottom = 0
     var indexOfTappedInfoButton = 0
+    var sectionOfTappedInfoButton = 0
     let kCounterKey = "kCounterKey"
     let klastRoundCompletedKey = "klastRoundCompletedKey"
     let kCurrentRow = "kCurrentRow"
     let kCurrentSection = "kCurrentSection"
     let roundGroups = [
         RoundGroup(text: "Rnd 1: 6 sc in Magic Ring, mark beginning of each round with stitch marker (6 sts)", stitchesPerRound: 6, totalRounds: 1, startingRound: 1),
-        RoundGroup(text: "Rnd 2: 2sc in each sc around (12 sts)", stitchesPerRound: 12, totalRounds: 1, startingRound: 2),
+        RoundGroup(text: "Rnd 2: 2sc in each sc around (12 sts)", stitchesPerRound: 2, totalRounds: 1, startingRound: 2),
         RoundGroup(text: "Rnd 3: *1sc in next sc, 2sc in next sc; rep from *, 6 times (18 sts)", stitchesPerRound: 18, totalRounds: 1, startingRound: 3),
         RoundGroup(text: "Rnd 4: *1sc in next 2 sc, 2sc in next sc; rep from *, 6 times (24 sts)", stitchesPerRound: 24, totalRounds: 1, startingRound: 4),
         RoundGroup(text: "Rnd 5: *1sc in next 3 sc, 2sc in next sc; rep from *, 6 times (30 sts)", stitchesPerRound: 30, totalRounds: 1, startingRound: 5),
@@ -63,8 +64,13 @@ class OctopusPatternViewController: UIViewController {
     ]
     
     let bottomRoundGroups = [
-        RoundGroup(text: "Rnd 1: 1sc in each single crochet around (16 sts)", stitchesPerRound: 16, totalRounds: 1, startingRound: 1),
-        RoundGroup(text: "Rnd 2: 1sc in each single crochet around (16 sts)", stitchesPerRound: 16, totalRounds: 1, startingRound: 2)
+        RoundGroup(text: "Rnd 1: 5sc into Magic Ring (5sts)", stitchesPerRound: 5, totalRounds: 1, startingRound: 1),
+        RoundGroup(text: "Rnd 2: 2sc in each sc around (10 sts)", stitchesPerRound: 10, totalRounds: 1, startingRound: 2),
+        RoundGroup(text: "Rnd 3: *1sc in next sc, 2sc in next sc; rep from *, 5 times (15 sts)", stitchesPerRound: 15, totalRounds: 1, startingRound: 3, notes: "\nFinish with a slip stitch and cut yarn with " +
+            "a long tail. Using a darning needle, move the yarn tail from the outside of the circle to the middle/back of the circle to join the beginning tail. Tie the tails together securely, then cut the tails short." +
+            "Put the bottom of the octopus on the opening of the octopus’ head, lining up the stitches of both pieces. \n" +
+            "Pick the head yarn loop back up with your hook, and single crochet around the bottom piece and head. Each sc stitch will join the bottom piece and the octopus head together. (16 sts) \n" +
+            "Continue with Rnd 25 to create the tentacles.")
     ]
     
     override func viewDidLoad() {
@@ -154,11 +160,11 @@ class OctopusPatternViewController: UIViewController {
         super.prepare(for: segue, sender: nil)
         if segue.identifier == "showsInfoDetails", let nc = segue.destination as? UINavigationController {
             if let vc = nc.topViewController as? InfoDetailsViewController {
-                if currentSection == 0 {
-                    vc.notes = roundGroups[self.indexOfTappedInfoButton].notes
+                if sectionOfTappedInfoButton == 0 {
+                    vc.notes = roundGroups[indexOfTappedInfoButton].notes
                 }
                 else {
-                    vc.notes = bottomRoundGroups[self.indexOfTappedInfoButton].notes
+                    vc.notes = bottomRoundGroups[indexOfTappedInfoButton].notes
                 }
             }
         }
@@ -246,7 +252,8 @@ extension OctopusPatternViewController: UITableViewDataSource {
 extension OctopusPatternViewController: UITableViewDelegate {
     
     func tableView(_ tableView: UITableView, accessoryButtonTappedForRowWith indexPath: IndexPath) {
-        self.indexOfTappedInfoButton = indexPath.row
+        indexOfTappedInfoButton = indexPath.row
+        sectionOfTappedInfoButton = indexPath.section
         performSegue(withIdentifier: "showsInfoDetails", sender: nil)
         
     }
@@ -284,7 +291,7 @@ extension OctopusPatternViewController: UITableViewDelegate {
             headerLabel2.text = "The bottom of the octopus is a separate piece, that will “cap” the end of the " +
                 "octopus’ head, holding in the stuffing. It can be created with a second, " +
                 "contrasting color of yarn, so that the head yarn does not need to be cut. You will " +
-                "be picking the head yarn back up to attach the bottom piece."
+            "be picking the head yarn back up to attach the bottom piece."
         }
         
         return headerView
