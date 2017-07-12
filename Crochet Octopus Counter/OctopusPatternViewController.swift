@@ -26,6 +26,7 @@ class OctopusPatternViewController: UIViewController {
     var currentSection = 0
     var lastRoundCompleted = 0
     var lastRoundCompletedForBottom = 0
+    var lastRoundCompletedForTentacles = 0
     var indexOfTappedInfoButton = 0
     var sectionOfTappedInfoButton = 0
     let kCounterKey = "kCounterKey"
@@ -35,45 +36,45 @@ class OctopusPatternViewController: UIViewController {
     let roundGroups = [
         RoundGroup(text: "Rnd 1: 6 sc in Magic Ring, mark beginning of each round with stitch marker (6 sts)", stitchesPerRound: 6, totalRounds: 1, startingRound: 1),
         RoundGroup(text: "Rnd 2: 2sc in each sc around (12 sts)", stitchesPerRound: 2, totalRounds: 1, startingRound: 2),
-        RoundGroup(text: "Rnd 3: *1sc in next sc, 2sc in next sc; rep from *, 6 times (18 sts)", stitchesPerRound: 18, totalRounds: 1, startingRound: 3),
-        RoundGroup(text: "Rnd 4: *1sc in next 2 sc, 2sc in next sc; rep from *, 6 times (24 sts)", stitchesPerRound: 24, totalRounds: 1, startingRound: 4),
-        RoundGroup(text: "Rnd 5: *1sc in next 3 sc, 2sc in next sc; rep from *, 6 times (30 sts)", stitchesPerRound: 30, totalRounds: 1, startingRound: 5),
-        RoundGroup(text: "Rnd 6: *1sc in next 4 sc, 2sc in next sc; rep from *, 6 times (36 sts)", stitchesPerRound: 36, totalRounds: 1, startingRound: 6, notes: "\nThis is a good point to stop and \n" +
-            " \n" +
-            "• check for holes:\n" +
-            "If a standard 3” lollipop stick can be inserted between stitches, then your holes are too big. See Technique Notes above. \n" +
-            " \n" +
-            "• check for size:\n" +
-            "If your round measures smaller than 1.3 inch (3.5 cm) in diameter at this point, add an additional increase round or two. If your round measures larger than 2 inches in diameter at this point, " +
-            "you may need to delete an upcoming round or two so the head doesn’t come out too tall (deleting a few between 7-14 is recommended)."),
-        RoundGroup(text: "Rnds 7-14: Sc in each single crochet around (36 sts)", stitchesPerRound: 36, totalRounds: 8, startingRound: 7, notes: "\nThis is a good point to stop and \n" +
-            " \n" +
-            "• add embroidered features. Features may not be added after stuffing. \n" +
-            "\n" +
-            "• add or delete rounds for height correction (head height should be about 1.5” at this point) \n" +
-            " \n" +
-            "• check again for holes"),
-        RoundGroup(text: "Rnd 15: *1sc in next 4 sc, sc2tog; rep from *, 6 times (30 sts)", stitchesPerRound: 30, totalRounds: 1, startingRound: 15),
-        RoundGroup(text: "Rnds 16-17: 1sc in each single crochet around (30 sts)", stitchesPerRound: 30, totalRounds: 2, startingRound: 16),
-        RoundGroup(text: "Rnd 18: *1sc in next 3 sc, sc2tog; rep from *, 6 times (24 sts)", stitchesPerRound: 24, totalRounds: 1, startingRound: 18),
-        RoundGroup(text: "Rnds 19-20: 1 sc in each single crochet around (24 sts)", stitchesPerRound: 24, totalRounds: 1, startingRound: 19),
-        RoundGroup(text: "Rnd 21: *1sc in next 2 sc, sc2tog; rep from *, 6 times (18 sts)", stitchesPerRound: 18, totalRounds: 1, startingRound: 21),
-        RoundGroup(text: "Rnd 22: 1sc in each single crochet around (18sts)", stitchesPerRound: 18, totalRounds: 1, startingRound: 22),
-        RoundGroup(text: "Rnd 23: *1sc in next 7 single crochet, sc2tog; rep from *, 2 times (16 sts)", stitchesPerRound: 16, totalRounds: 1, startingRound: 23),
-        RoundGroup(text: "Rnd 24: 1sc in each single crochet around (16 sts)", stitchesPerRound: 16, totalRounds: 1, startingRound: 24)
+//        RoundGroup(text: "Rnd 3: *1sc in next sc, 2sc in next sc; rep from *, 6 times (18 sts)", stitchesPerRound: 18, totalRounds: 1, startingRound: 3),
+//        RoundGroup(text: "Rnd 4: *1sc in next 2 sc, 2sc in next sc; rep from *, 6 times (24 sts)", stitchesPerRound: 24, totalRounds: 1, startingRound: 4),
+//        RoundGroup(text: "Rnd 5: *1sc in next 3 sc, 2sc in next sc; rep from *, 6 times (30 sts)", stitchesPerRound: 30, totalRounds: 1, startingRound: 5),
+//        RoundGroup(text: "Rnd 6: *1sc in next 4 sc, 2sc in next sc; rep from *, 6 times (36 sts)", stitchesPerRound: 36, totalRounds: 1, startingRound: 6, notes: "\nThis is a good point to stop and \n" +
+//            " \n" +
+//            "• check for holes:\n" +
+//            "If a standard 3” lollipop stick can be inserted between stitches, then your holes are too big. See Technique Notes above. \n" +
+//            " \n" +
+//            "• check for size:\n" +
+//            "If your round measures smaller than 1.3 inch (3.5 cm) in diameter at this point, add an additional increase round or two. If your round measures larger than 2 inches in diameter at this point, " +
+//            "you may need to delete an upcoming round or two so the head doesn’t come out too tall (deleting a few between 7-14 is recommended)."),
+//        RoundGroup(text: "Rnds 7-14: Sc in each single crochet around (36 sts)", stitchesPerRound: 36, totalRounds: 8, startingRound: 7, notes: "\nThis is a good point to stop and \n" +
+//            " \n" +
+//            "• add embroidered features. Features may not be added after stuffing. \n" +
+//            "\n" +
+//            "• add or delete rounds for height correction (head height should be about 1.5” at this point) \n" +
+//            " \n" +
+//            "• check again for holes"),
+//        RoundGroup(text: "Rnd 15: *1sc in next 4 sc, sc2tog; rep from *, 6 times (30 sts)", stitchesPerRound: 30, totalRounds: 1, startingRound: 15),
+//        RoundGroup(text: "Rnds 16-17: 1sc in each single crochet around (30 sts)", stitchesPerRound: 30, totalRounds: 2, startingRound: 16),
+//        RoundGroup(text: "Rnd 18: *1sc in next 3 sc, sc2tog; rep from *, 6 times (24 sts)", stitchesPerRound: 24, totalRounds: 1, startingRound: 18),
+//        RoundGroup(text: "Rnds 19-20: 1 sc in each single crochet around (24 sts)", stitchesPerRound: 24, totalRounds: 1, startingRound: 19),
+//        RoundGroup(text: "Rnd 21: *1sc in next 2 sc, sc2tog; rep from *, 6 times (18 sts)", stitchesPerRound: 18, totalRounds: 1, startingRound: 21),
+//        RoundGroup(text: "Rnd 22: 1sc in each single crochet around (18sts)", stitchesPerRound: 18, totalRounds: 1, startingRound: 22),
+//        RoundGroup(text: "Rnd 23: *1sc in next 7 single crochet, sc2tog; rep from *, 2 times (16 sts)", stitchesPerRound: 16, totalRounds: 1, startingRound: 23),
+//        RoundGroup(text: "Rnd 24: 1sc in each single crochet around (16 sts)", stitchesPerRound: 16, totalRounds: 1, startingRound: 24)
     ]
     
     let bottomRoundGroups = [
         RoundGroup(text: "Rnd 1: 5sc into Magic Ring (5sts)", stitchesPerRound: 5, totalRounds: 1, startingRound: 1),
-        RoundGroup(text: "Rnd 2: 2sc in each sc around (10 sts)", stitchesPerRound: 10, totalRounds: 1, startingRound: 2),
-        RoundGroup(text: "Rnd 3: *1sc in next sc, 2sc in next sc; rep from *, 5 times (15 sts)", stitchesPerRound: 15, totalRounds: 1, startingRound: 3, notes: "\nFinish with a slip stitch and cut yarn with " +
-            "a long tail. Using a darning needle, move the yarn tail from the outside of the circle to the middle/back of the circle to join the beginning tail. Tie the tails together securely, then cut the tails short.\n" +
-            " \n" +
-            "Put the bottom of the octopus on the opening of the octopus’ head, lining up the stitches of both pieces. \n" +
-            " \n" +
-            "Pick the head yarn loop back up with your hook, and single crochet around the bottom piece and head. Each sc stitch will join the bottom piece and the octopus head together. (16 sts) \n" +
-            " \n" +
-            "Continue with Rnd 25 to create the tentacles.")
+//        RoundGroup(text: "Rnd 2: 2sc in each sc around (10 sts)", stitchesPerRound: 10, totalRounds: 1, startingRound: 2),
+//        RoundGroup(text: "Rnd 3: *1sc in next sc, 2sc in next sc; rep from *, 5 times (15 sts)", stitchesPerRound: 15, totalRounds: 1, startingRound: 3, notes: "\nFinish with a slip stitch and cut yarn with " +
+//            "a long tail. Using a darning needle, move the yarn tail from the outside of the circle to the middle/back of the circle to join the beginning tail. Tie the tails together securely, then cut the tails short.\n" +
+//            " \n" +
+//            "Put the bottom of the octopus on the opening of the octopus’ head, lining up the stitches of both pieces. \n" +
+//            " \n" +
+//            "Pick the head yarn loop back up with your hook, and single crochet around the bottom piece and head. Each sc stitch will join the bottom piece and the octopus head together. (16 sts) \n" +
+//            " \n" +
+//            "Continue with Rnd 25 to create the tentacles.")
     ]
     
     let tentaclesRoundGroups = [
@@ -81,7 +82,7 @@ class OctopusPatternViewController: UIViewController {
             "The relaxed/coiled length does not matter. Best practice is to aim for about 7 or 7.5 inches, fully and tightly stretched), sc in 2nd chain from hook, then 2sc (or 3sc) in either the back or bottom" +
             "loop of each chain stitch until you reach the body. When done with the chain, slip stitch or sc into the next stitch. Sc again in the next sc; repeat from * until you have a tentacle in every" +
             "other stitch of Rnd 24. Finish with a slip stitch in the same stitch where the first tentacle began, and cut the yarn leaving a long yarn end. Draw the cut end through the last loop and pull tight" +
-            "to fasten off. Weave the finished end into the octopus’ head.", stitchesPerRound: 15, totalRounds: 1, startingRound: 25)
+            "to fasten off. Weave the finished end into the octopus’ head.", stitchesPerRound: 15, totalRounds: 1, startingRound: 1)
     ]
     
     
@@ -104,28 +105,37 @@ class OctopusPatternViewController: UIViewController {
     
     @IBAction func counterButtonTapped(_ sender: UIButton) {
         counter += 1
-        let currentRoundGroup = currentSection == 0 ? roundGroups[currentRow] : bottomRoundGroups[currentRow]
-        
+        let currentRoundGroup = currentSection == 0 ? roundGroups[currentRow] : (currentSection == 1 ? bottomRoundGroups[currentRow]: tentaclesRoundGroups[currentRow])
         if counter == currentRoundGroup.stitchesPerRound {
             currentRoundGroup.roundsCompleted += 1
             if currentSection == 0 {
                 lastRoundCompleted += 1
             }
-            else {
+            else if currentSection == 1 {
                 lastRoundCompletedForBottom += 1
             }
-            
-            let lastRoundCompletedForCurrentSection = currentSection == 0 ? lastRoundCompleted : lastRoundCompletedForBottom
+            else {
+                lastRoundCompletedForTentacles += 1
+            }
+            let lastRoundCompletedForCurrentSection = currentSection == 0 ? lastRoundCompleted : (currentSection == 1 ? lastRoundCompletedForBottom : lastRoundCompletedForTentacles)
             currentRoundGroup.updateState(lastRoundCompleted: lastRoundCompletedForCurrentSection, shouldAutoStart: false)
             
             if currentRoundGroup.state == .completed {
                 updateCell(atRow: currentRow, atSection: currentSection)
                 currentRow += 1
-                if currentSection == 0 && currentRow >= roundGroups.count {
-                    currentRow = 0
-                    currentSection = 1
-                }
                 
+                let currentRoundGroupsCount = currentSection == 0 ? roundGroups.count : (currentSection == 1 ? bottomRoundGroups.count : tentaclesRoundGroups.count)
+                
+                if currentRow >= currentRoundGroupsCount {
+                    currentRow = 0
+                    
+                    if currentSection == 0 {
+                        currentSection = 1
+                    }
+                    else if currentSection == 1 {
+                        currentSection = 2
+                    }
+                }
             }
             updateCell(atRow: currentRow, atSection: currentSection) //Updating the current row, or the next row if the current row was completed in the previous line
             
@@ -145,9 +155,15 @@ class OctopusPatternViewController: UIViewController {
         if counter >= 1 {
             counter -= 1
         }
-        else if currentSection == 1 {
-            currentSection = 0
+            
+        else if currentSection != 0 {
             counter = roundGroups.count - 1
+            if currentSection == 1 {
+                currentSection = 0
+            }
+            else if currentSection == 2 {
+                currentSection = 1
+            }
         }
         
         if counter == 0 {
@@ -225,6 +241,19 @@ class OctopusPatternViewController: UIViewController {
             round.updateState(lastRoundCompleted: lastRoundCompletedForBottom, shouldAutoStart: false)
         }
         
+        for round in tentaclesRoundGroups {
+            //In-progress:
+            if lastRoundCompletedForTentacles >= round.startingRound && lastRoundCompletedForTentacles < round.startingRound + round.totalRounds - 1 {
+                round.roundsCompleted = lastRoundCompletedForTentacles - round.startingRound + 1
+            }
+                //Completed:
+            else if lastRoundCompletedForBottom >= round.startingRound {
+                round.roundsCompleted = round.totalRounds
+            }
+            
+            round.updateState(lastRoundCompleted: lastRoundCompletedForTentacles, shouldAutoStart: false)
+        }
+        
         tableView.reloadData()
     }
 }
@@ -238,8 +267,11 @@ extension OctopusPatternViewController: UITableViewDataSource {
         if section == 0 {
             return roundGroups.count
         }
-        else {
+        else if section == 1 {
             return bottomRoundGroups.count
+        }
+        else {
+            return tentaclesRoundGroups.count
         }
     }
     
@@ -255,7 +287,7 @@ extension OctopusPatternViewController: UITableViewDataSource {
             cell.configure(with: bottomRoundGroups[indexPath.row], lastRoundCompleted: lastRoundCompletedForBottom)
         }
         else {
-            cell.configure(with: tentaclesRoundGroups[indexPath.row], lastRoundCompleted: lastRoundCompleted)
+            cell.configure(with: tentaclesRoundGroups[indexPath.row], lastRoundCompleted: lastRoundCompletedForTentacles)
         }
         return cell
     }
@@ -309,7 +341,7 @@ extension OctopusPatternViewController: UITableViewDelegate {
         }
         else {
             headerLabel1.text = "Tentacles"
-
+            
         }
         return headerView
     }
