@@ -36,45 +36,45 @@ class OctopusPatternViewController: UIViewController {
     let roundGroups = [
         RoundGroup(text: "Rnd 1: 6 sc in Magic Ring, mark beginning of each round with stitch marker (6 sts)", stitchesPerRound: 6, totalRounds: 1, startingRound: 1),
         RoundGroup(text: "Rnd 2: 2sc in each sc around (12 sts)", stitchesPerRound: 2, totalRounds: 1, startingRound: 2),
-//        RoundGroup(text: "Rnd 3: *1sc in next sc, 2sc in next sc; rep from *, 6 times (18 sts)", stitchesPerRound: 18, totalRounds: 1, startingRound: 3),
-//        RoundGroup(text: "Rnd 4: *1sc in next 2 sc, 2sc in next sc; rep from *, 6 times (24 sts)", stitchesPerRound: 24, totalRounds: 1, startingRound: 4),
-//        RoundGroup(text: "Rnd 5: *1sc in next 3 sc, 2sc in next sc; rep from *, 6 times (30 sts)", stitchesPerRound: 30, totalRounds: 1, startingRound: 5),
-//        RoundGroup(text: "Rnd 6: *1sc in next 4 sc, 2sc in next sc; rep from *, 6 times (36 sts)", stitchesPerRound: 36, totalRounds: 1, startingRound: 6, notes: "\nThis is a good point to stop and \n" +
-//            " \n" +
-//            "• check for holes:\n" +
-//            "If a standard 3” lollipop stick can be inserted between stitches, then your holes are too big. See Technique Notes above. \n" +
-//            " \n" +
-//            "• check for size:\n" +
-//            "If your round measures smaller than 1.3 inch (3.5 cm) in diameter at this point, add an additional increase round or two. If your round measures larger than 2 inches in diameter at this point, " +
-//            "you may need to delete an upcoming round or two so the head doesn’t come out too tall (deleting a few between 7-14 is recommended)."),
-//        RoundGroup(text: "Rnds 7-14: Sc in each single crochet around (36 sts)", stitchesPerRound: 36, totalRounds: 8, startingRound: 7, notes: "\nThis is a good point to stop and \n" +
-//            " \n" +
-//            "• add embroidered features. Features may not be added after stuffing. \n" +
-//            "\n" +
-//            "• add or delete rounds for height correction (head height should be about 1.5” at this point) \n" +
-//            " \n" +
-//            "• check again for holes"),
-//        RoundGroup(text: "Rnd 15: *1sc in next 4 sc, sc2tog; rep from *, 6 times (30 sts)", stitchesPerRound: 30, totalRounds: 1, startingRound: 15),
-//        RoundGroup(text: "Rnds 16-17: 1sc in each single crochet around (30 sts)", stitchesPerRound: 30, totalRounds: 2, startingRound: 16),
-//        RoundGroup(text: "Rnd 18: *1sc in next 3 sc, sc2tog; rep from *, 6 times (24 sts)", stitchesPerRound: 24, totalRounds: 1, startingRound: 18),
-//        RoundGroup(text: "Rnds 19-20: 1 sc in each single crochet around (24 sts)", stitchesPerRound: 24, totalRounds: 1, startingRound: 19),
-//        RoundGroup(text: "Rnd 21: *1sc in next 2 sc, sc2tog; rep from *, 6 times (18 sts)", stitchesPerRound: 18, totalRounds: 1, startingRound: 21),
-//        RoundGroup(text: "Rnd 22: 1sc in each single crochet around (18sts)", stitchesPerRound: 18, totalRounds: 1, startingRound: 22),
-//        RoundGroup(text: "Rnd 23: *1sc in next 7 single crochet, sc2tog; rep from *, 2 times (16 sts)", stitchesPerRound: 16, totalRounds: 1, startingRound: 23),
-//        RoundGroup(text: "Rnd 24: 1sc in each single crochet around (16 sts)", stitchesPerRound: 16, totalRounds: 1, startingRound: 24)
+        //        RoundGroup(text: "Rnd 3: *1sc in next sc, 2sc in next sc; rep from *, 6 times (18 sts)", stitchesPerRound: 18, totalRounds: 1, startingRound: 3),
+        //        RoundGroup(text: "Rnd 4: *1sc in next 2 sc, 2sc in next sc; rep from *, 6 times (24 sts)", stitchesPerRound: 24, totalRounds: 1, startingRound: 4),
+        //        RoundGroup(text: "Rnd 5: *1sc in next 3 sc, 2sc in next sc; rep from *, 6 times (30 sts)", stitchesPerRound: 30, totalRounds: 1, startingRound: 5),
+        //        RoundGroup(text: "Rnd 6: *1sc in next 4 sc, 2sc in next sc; rep from *, 6 times (36 sts)", stitchesPerRound: 36, totalRounds: 1, startingRound: 6, notes: "\nThis is a good point to stop and \n" +
+        //            " \n" +
+        //            "• check for holes:\n" +
+        //            "If a standard 3” lollipop stick can be inserted between stitches, then your holes are too big. See Technique Notes above. \n" +
+        //            " \n" +
+        //            "• check for size:\n" +
+        //            "If your round measures smaller than 1.3 inch (3.5 cm) in diameter at this point, add an additional increase round or two. If your round measures larger than 2 inches in diameter at this point, " +
+        //            "you may need to delete an upcoming round or two so the head doesn’t come out too tall (deleting a few between 7-14 is recommended)."),
+        //        RoundGroup(text: "Rnds 7-14: Sc in each single crochet around (36 sts)", stitchesPerRound: 36, totalRounds: 8, startingRound: 7, notes: "\nThis is a good point to stop and \n" +
+        //            " \n" +
+        //            "• add embroidered features. Features may not be added after stuffing. \n" +
+        //            "\n" +
+        //            "• add or delete rounds for height correction (head height should be about 1.5” at this point) \n" +
+        //            " \n" +
+        //            "• check again for holes"),
+        //        RoundGroup(text: "Rnd 15: *1sc in next 4 sc, sc2tog; rep from *, 6 times (30 sts)", stitchesPerRound: 30, totalRounds: 1, startingRound: 15),
+        //        RoundGroup(text: "Rnds 16-17: 1sc in each single crochet around (30 sts)", stitchesPerRound: 30, totalRounds: 2, startingRound: 16),
+        //        RoundGroup(text: "Rnd 18: *1sc in next 3 sc, sc2tog; rep from *, 6 times (24 sts)", stitchesPerRound: 24, totalRounds: 1, startingRound: 18),
+        //        RoundGroup(text: "Rnds 19-20: 1 sc in each single crochet around (24 sts)", stitchesPerRound: 24, totalRounds: 1, startingRound: 19),
+        //        RoundGroup(text: "Rnd 21: *1sc in next 2 sc, sc2tog; rep from *, 6 times (18 sts)", stitchesPerRound: 18, totalRounds: 1, startingRound: 21),
+        //        RoundGroup(text: "Rnd 22: 1sc in each single crochet around (18sts)", stitchesPerRound: 18, totalRounds: 1, startingRound: 22),
+        //        RoundGroup(text: "Rnd 23: *1sc in next 7 single crochet, sc2tog; rep from *, 2 times (16 sts)", stitchesPerRound: 16, totalRounds: 1, startingRound: 23),
+        //        RoundGroup(text: "Rnd 24: 1sc in each single crochet around (16 sts)", stitchesPerRound: 16, totalRounds: 1, startingRound: 24)
     ]
     
     let bottomRoundGroups = [
         RoundGroup(text: "Rnd 1: 5sc into Magic Ring (5sts)", stitchesPerRound: 5, totalRounds: 1, startingRound: 1),
-//        RoundGroup(text: "Rnd 2: 2sc in each sc around (10 sts)", stitchesPerRound: 10, totalRounds: 1, startingRound: 2),
-//        RoundGroup(text: "Rnd 3: *1sc in next sc, 2sc in next sc; rep from *, 5 times (15 sts)", stitchesPerRound: 15, totalRounds: 1, startingRound: 3, notes: "\nFinish with a slip stitch and cut yarn with " +
-//            "a long tail. Using a darning needle, move the yarn tail from the outside of the circle to the middle/back of the circle to join the beginning tail. Tie the tails together securely, then cut the tails short.\n" +
-//            " \n" +
-//            "Put the bottom of the octopus on the opening of the octopus’ head, lining up the stitches of both pieces. \n" +
-//            " \n" +
-//            "Pick the head yarn loop back up with your hook, and single crochet around the bottom piece and head. Each sc stitch will join the bottom piece and the octopus head together. (16 sts) \n" +
-//            " \n" +
-//            "Continue with Rnd 25 to create the tentacles.")
+        //        RoundGroup(text: "Rnd 2: 2sc in each sc around (10 sts)", stitchesPerRound: 10, totalRounds: 1, startingRound: 2),
+        //        RoundGroup(text: "Rnd 3: *1sc in next sc, 2sc in next sc; rep from *, 5 times (15 sts)", stitchesPerRound: 15, totalRounds: 1, startingRound: 3, notes: "\nFinish with a slip stitch and cut yarn with " +
+        //            "a long tail. Using a darning needle, move the yarn tail from the outside of the circle to the middle/back of the circle to join the beginning tail. Tie the tails together securely, then cut the tails short.\n" +
+        //            " \n" +
+        //            "Put the bottom of the octopus on the opening of the octopus’ head, lining up the stitches of both pieces. \n" +
+        //            " \n" +
+        //            "Pick the head yarn loop back up with your hook, and single crochet around the bottom piece and head. Each sc stitch will join the bottom piece and the octopus head together. (16 sts) \n" +
+        //            " \n" +
+        //            "Continue with Rnd 25 to create the tentacles.")
     ]
     
     let tentaclesRoundGroups = [
@@ -150,28 +150,86 @@ class OctopusPatternViewController: UIViewController {
         saveState()
     }
     
-    
-    @IBAction func frogButtonTapped(_ sender: UIButton) {
-        if counter >= 1 {
-            counter -= 1
-        }
+    @IBAction func showActionSheet(_ sender: Any) {
+        let undoMenu = UIAlertController(title: nil, message: "Choose what to frog", preferredStyle: .actionSheet)
+        
+        let undoStitchButton = UIAlertAction(title: "Frog a stitch", style: .default, handler: { (action) -> Void in
+            print("Ok, stitch frogged.")
             
-        else if currentSection != 0 {
-            counter = roundGroups.count - 1
-            if currentSection == 1 {
-                currentSection = 0
-            }
-            else if currentSection == 2 {
-                currentSection = 1
-            }
-        }
+            let undoAlert = UIAlertController(title: "Frog a stitch", message: "Are you sure you want to frog a stitch?", preferredStyle: UIAlertControllerStyle.alert)
+            undoAlert.addAction(UIAlertAction(title: "Ok", style: .default, handler: { (action: UIAlertAction!) in
+                print("Handle Ok logic here")
+                if self.counter >= 1 {
+                    self.counter -= 1
+                }
+                else if self.currentSection != 0 {
+                    self.counter = self.roundGroups.count - 1
+                    if self.currentSection == 1 {
+                        
+                        self.currentSection = 0
+                    }
+                    else if self.currentSection == 2 {
+                        self.currentSection = 1
+                    }
+                }
+                
+                if self.counter == 0 {
+                    self.frogButton.isUserInteractionEnabled = false
+                }
+                
+                self.tableView.reloadData() //TODO: select the different row
+                
+            }))
+            undoAlert.addAction(UIAlertAction(title: "Cancel", style: .cancel, handler: { (action: UIAlertAction!) in
+                print("Handle Cancel Logic here")
+            }))
+            
+            self.present(undoAlert, animated: true, completion: nil)
+            
+        })
         
-        if counter == 0 {
-            frogButton.isUserInteractionEnabled = false
-        }
+        let undoRowButton = UIAlertAction(title: "Frog a row", style: .default, handler: { (action) -> Void in
+            print("Ok, row frogged.")
+        })
         
-        tableView.reloadData() //TODO: select the different row
+        let resetButton = UIAlertAction(title: "Clear all", style: .default, handler: { (action) -> Void in
+            print("Ok, cleared all.")
+        })
+        
+        let cancelButton = UIAlertAction(title: "Cancel", style: .cancel, handler: { (action) -> Void in
+            print("Cancelled")
+        })
+        
+        undoMenu.addAction(undoStitchButton)
+        undoMenu.addAction(undoRowButton)
+        undoMenu.addAction(resetButton)
+        undoMenu.addAction(cancelButton)
+        
+        self.navigationController!.present(undoMenu, animated: true, completion: nil)
     }
+    
+    
+//    @IBAction func frogButtonTapped(_ sender: UIButton) {
+//        if counter >= 1 {
+//            counter -= 1
+//        }
+//            
+//        else if currentSection != 0 {
+//            counter = roundGroups.count - 1
+//            if currentSection == 1 {
+//                currentSection = 0
+//            }
+//            else if currentSection == 2 {
+//                currentSection = 1
+//            }
+//        }
+//        
+//        if counter == 0 {
+//            frogButton.isUserInteractionEnabled = false
+//        }
+//        
+//        tableView.reloadData() //TODO: select the different row
+//    }
     
     @IBAction func unwindToPattern(segue:UIStoryboardSegue) {
         

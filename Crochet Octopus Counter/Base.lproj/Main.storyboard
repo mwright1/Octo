@@ -112,7 +112,7 @@
                                 </constraints>
                                 <state key="normal" image="frogButton"/>
                                 <connections>
-                                    <action selector="frogButtonTapped:" destination="BYZ-38-t0r" eventType="touchUpInside" id="MXg-8Y-86J"/>
+                                    <action selector="showActionSheet:" destination="BYZ-38-t0r" eventType="touchUpInside" id="FN3-5Y-4vI"/>
                                 </connections>
                             </button>
                         </subviews>
