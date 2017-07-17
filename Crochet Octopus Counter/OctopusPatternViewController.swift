@@ -126,7 +126,7 @@ class OctopusPatternViewController: UIViewController {
                 
                 let currentRoundGroupsCount = currentSection == 0 ? roundGroups.count : (currentSection == 1 ? bottomRoundGroups.count : tentaclesRoundGroups.count)
                 
-                if currentRow >= currentRoundGroupsCount {
+                if currentRow == currentRoundGroupsCount {
                     currentRow = 0
                     
                     if currentSection == 0 {
@@ -237,7 +237,10 @@ class OctopusPatternViewController: UIViewController {
     
     private func updateCell(atRow row: Int, atSection section: Int) {
         if let cell = tableView.cellForRow(at: IndexPath(row: row, section: section)) as? PatternRowTableViewCell {
-            cell.configure(with: roundGroups[row], lastRoundCompleted: lastRoundCompleted)
+            let currentRoundGroup = currentSection == 0 ? roundGroups[row] : (currentSection == 1 ? bottomRoundGroups[row] : tentaclesRoundGroups[row])
+            let lastRoundCompletedForCurrentSection = currentSection == 0 ? lastRoundCompleted : (currentSection == 1 ? lastRoundCompletedForBottom : lastRoundCompletedForTentacles)
+            
+            cell.configure(with: currentRoundGroup, lastRoundCompleted: lastRoundCompletedForCurrentSection)
         }
     }
     

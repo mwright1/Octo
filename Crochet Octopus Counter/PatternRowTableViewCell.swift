@@ -40,7 +40,7 @@ class PatternRowTableViewCell: UITableViewCell {
         }
         
         rowPatternLabel.text = round.text
-        
+           
         switch round.state {
         case .completed:
             checkBoxButton.isSelected = true
