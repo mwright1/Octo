@@ -55,13 +55,14 @@
                                                     <nil key="highlightedColor"/>
                                                 </label>
                                                 <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="1000" verticalCompressionResistancePriority="1000" text="Label" lineBreakMode="wordWrap" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="vWB-ym-BZ0">
-                                                    <rect key="frame" x="70" y="5" width="329" height="33.666666666666664"/>
+                                                    <rect key="frame" x="70" y="5" width="329" height="20.333333333333336"/>
                                                     <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                                     <color key="textColor" red="0.29016506671905518" green="0.29021847248077393" blue="0.29015365242958069" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                                     <nil key="highlightedColor"/>
                                                 </label>
                                             </subviews>
                                             <constraints>
+                                                <constraint firstAttribute="bottomMargin" relation="greaterThanOrEqual" secondItem="6Ad-nn-jH1" secondAttribute="bottom" constant="2" id="0ho-1a-y8d"/>
                                                 <constraint firstItem="P2G-iD-J4f" firstAttribute="top" secondItem="kUq-JK-xZW" secondAttribute="top" id="2ES-Df-JWy"/>
                                                 <constraint firstItem="vWB-ym-BZ0" firstAttribute="top" secondItem="kUq-JK-xZW" secondAttribute="top" constant="5" id="A9k-mH-4wE"/>
                                                 <constraint firstItem="vWB-ym-BZ0" firstAttribute="leading" secondItem="6Ad-nn-jH1" secondAttribute="trailing" constant="5" id="Tfv-HK-SqP"/>

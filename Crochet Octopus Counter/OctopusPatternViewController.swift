@@ -33,7 +33,7 @@ class OctopusPatternViewController: UIViewController {
     let klastRoundCompletedKey = "klastRoundCompletedKey"
     let kCurrentRow = "kCurrentRow"
     let kCurrentSection = "kCurrentSection"
-    let roundGroups = [
+    var roundGroups = [
         RoundGroup(text: "Rnd 1: 6 sc in Magic Ring, mark beginning of each round with stitch marker (6 sts)", stitchesPerRound: 6, totalRounds: 1, startingRound: 1),
         RoundGroup(text: "Rnd 2: 2sc in each sc around (12 sts)", stitchesPerRound: 2, totalRounds: 1, startingRound: 2),
         //        RoundGroup(text: "Rnd 3: *1sc in next sc, 2sc in next sc; rep from *, 6 times (18 sts)", stitchesPerRound: 18, totalRounds: 1, startingRound: 3),
@@ -177,7 +177,7 @@ class OctopusPatternViewController: UIViewController {
                     self.frogButton.isUserInteractionEnabled = false
                 }
                 
-                self.tableView.reloadData() //TODO: select the different row
+                self.tableView.reloadData()
                 
             }))
             undoAlert.addAction(UIAlertAction(title: "Cancel", style: .cancel, handler: { (action: UIAlertAction!) in
@@ -185,15 +185,81 @@ class OctopusPatternViewController: UIViewController {
             }))
             
             self.present(undoAlert, animated: true, completion: nil)
-            
         })
         
         let undoRowButton = UIAlertAction(title: "Frog a row", style: .default, handler: { (action) -> Void in
             print("Ok, row frogged.")
+            let undoRowAlert = UIAlertController(title: "Frog a row", message: "Are you sure you want to frog a row?", preferredStyle: UIAlertControllerStyle.alert)
+            undoRowAlert.addAction(UIAlertAction(title: "Ok", style: .default, handler: { (action: UIAlertAction!) in
+                print("Handle Ok logic here")
+                
+                self.currentRow = self.currentRow - 1
+                if self.counter >= 1 {
+                    self.counter -= 1
+                }
+                else if self.currentSection != 0 {
+                    self.counter = self.roundGroups.count - 1
+                    if self.currentSection == 1 {
+                        
+                        self.currentSection = 0
+                    }
+                    else if self.currentSection == 2 {
+                        self.currentSection = 1
+                    }
+                }
+                
+                self.updateCell(atRow: self.currentRow, atSection: self.currentSection)
+                self.tableView.reloadData()
+                if self.counter == 0 {
+                    self.frogButton.isUserInteractionEnabled = false
+                }
+                
+                
+                
+            }))
+            undoRowAlert.addAction(UIAlertAction(title: "Cancel", style: .cancel, handler: { (action: UIAlertAction!) in
+                print("Handle Cancel Logic here")
+            }))
+            
+            self.present(undoRowAlert, animated: true, completion: nil)
         })
         
         let resetButton = UIAlertAction(title: "Clear all", style: .default, handler: { (action) -> Void in
             print("Ok, cleared all.")
+            
+            let resetAlert = UIAlertController(title: "Clear all", message: "Are you sure you want to clear all?", preferredStyle: UIAlertControllerStyle.alert)
+            resetAlert.addAction(UIAlertAction(title: "Ok", style: .default, handler: { (action: UIAlertAction!) in
+                print("Handle Ok logic here")
+                self.counter = 0
+                self.currentRow = 0
+                self.currentSection = 0
+                self.lastRoundCompleted = 0
+                self.lastRoundCompletedForBottom = 0
+                self.lastRoundCompletedForTentacles = 0
+                self.indexOfTappedInfoButton = 0
+                self.sectionOfTappedInfoButton = 0
+                for roundGroup in self.roundGroups {
+                    roundGroup.roundsCompleted = 0
+                    roundGroup.updateState(lastRoundCompleted: 0, shouldAutoStart: true)
+                }
+                for roundGroup in self.bottomRoundGroups {
+                    roundGroup.roundsCompleted = 0
+                    roundGroup.updateState(lastRoundCompleted: 0, shouldAutoStart: false)
+                }
+                for roundGroup in self.tentaclesRoundGroups {
+                    roundGroup.roundsCompleted = 0
+                    roundGroup.updateState(lastRoundCompleted: 0, shouldAutoStart: false)
+                }
+                if self.counter == 0 {
+                    self.frogButton.isUserInteractionEnabled = false
+                }
+                self.tableView.reloadData()
+            }))
+            resetAlert.addAction(UIAlertAction(title: "Cancel", style: .cancel, handler: { (action: UIAlertAction!) in
+                print("Handle Cancel Logic here")
+            }))
+            
+            self.present(resetAlert, animated: true, completion: nil)
         })
         
         let cancelButton = UIAlertAction(title: "Cancel", style: .cancel, handler: { (action) -> Void in
@@ -207,29 +273,6 @@ class OctopusPatternViewController: UIViewController {
         
         self.navigationController!.present(undoMenu, animated: true, completion: nil)
     }
-    
-    
-//    @IBAction func frogButtonTapped(_ sender: UIButton) {
-//        if counter >= 1 {
-//            counter -= 1
-//        }
-//            
-//        else if currentSection != 0 {
-//            counter = roundGroups.count - 1
-//            if currentSection == 1 {
-//                currentSection = 0
-//            }
-//            else if currentSection == 2 {
-//                currentSection = 1
-//            }
-//        }
-//        
-//        if counter == 0 {
-//            frogButton.isUserInteractionEnabled = false
-//        }
-//        
-//        tableView.reloadData() //TODO: select the different row
-//    }
     
     @IBAction func unwindToPattern(segue:UIStoryboardSegue) {
         
