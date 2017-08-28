@@ -262,6 +262,8 @@ class OctopusPatternViewController: UIViewController {
             print("Cancelled")
         })
         
+        updateCell(atRow: currentRow, atSection: currentSection)
+        
         undoMenu.addAction(undoStitchButton)
         //TODO:
         //undoMenu.addAction(undoRowButton)
@@ -269,6 +271,8 @@ class OctopusPatternViewController: UIViewController {
         undoMenu.addAction(cancelButton)
         
         self.navigationController!.present(undoMenu, animated: true, completion: nil)
+        
+        
         
     }
     
