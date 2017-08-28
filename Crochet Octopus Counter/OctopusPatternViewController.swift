@@ -104,6 +104,33 @@ class OctopusPatternViewController: UIViewController {
         loadState()
     }
     
+    func reset() {
+        
+        self.counter = 0
+        self.currentRow = 0
+        self.currentSection = 0
+        self.lastRoundCompleted = 0
+        self.lastRoundCompletedForBottom = 0
+        self.lastRoundCompletedForTentacles = 0
+        self.indexOfTappedInfoButton = 0
+        self.sectionOfTappedInfoButton = 0
+        for roundGroup in self.roundGroups {
+            roundGroup.roundsCompleted = 0
+            roundGroup.updateState(lastRoundCompleted: 0, shouldAutoStart: true)
+        }
+        for roundGroup in self.bottomRoundGroups {
+            roundGroup.roundsCompleted = 0
+            roundGroup.updateState(lastRoundCompleted: 0, shouldAutoStart: false)
+        }
+        for roundGroup in self.tentaclesRoundGroups {
+            roundGroup.roundsCompleted = 0
+            roundGroup.updateState(lastRoundCompleted: 0, shouldAutoStart: false)
+        }
+        if self.counter == 0 {
+            self.frogButton.isUserInteractionEnabled = false
+        }
+        
+    }
     
     @IBAction func counterButtonTapped(_ sender: UIButton) {
         counter += 1
@@ -136,6 +163,17 @@ class OctopusPatternViewController: UIViewController {
                     }
                     else if currentSection == 1 {
                         currentSection = 2
+                    }
+                        
+                    else if currentSection == 2 {
+                        let alert = UIAlertController(title: nil, message: "You did it! Pat yourself on the back!", preferredStyle: UIAlertControllerStyle.alert)
+                        alert.addAction(UIAlertAction(title: "Ok", style: .default, handler: { (action: UIAlertAction!) in
+                            
+                        }))
+                        self.present(alert, animated: true, completion: nil)
+                        
+                        
+                        reset()
                     }
                 }
             }
@@ -180,74 +218,56 @@ class OctopusPatternViewController: UIViewController {
         })
         
         
-//        let undoRowButton = UIAlertAction(title: "Frog a row", style: .default, handler: { (action) -> Void in
-//            print("Ok, row frogged.")
-//            let undoRowAlert = UIAlertController(title: "Frog a row", message: "Are you sure you want to frog a row?", preferredStyle: UIAlertControllerStyle.alert)
-//            undoRowAlert.addAction(UIAlertAction(title: "Ok", style: .default, handler: { (action: UIAlertAction!) in
-//                print("Handle Ok logic here")
-//                let currentRoundGroup = self.currentSection == 0 ? self.roundGroups[self.currentRow] : (self.currentSection == 1 ? self.bottomRoundGroups[self.currentRow]: self.tentaclesRoundGroups[self.currentRow
-//                    ])
-//                currentRoundGroup.roundsCompleted -= 1
-//                
-//                self.currentRow = self.currentRow - 1
-//                if self.counter >= 1 {
-//                    self.counter -= 1
-//                }
-//                else if self.currentSection != 0 {
-//                    self.counter = self.roundGroups.count - 1
-//                    if self.currentSection == 1 {
-//                        
-//                        self.currentSection = 0
-//                    }
-//                    else if self.currentSection == 2 {
-//                        self.currentSection = 1
-//                    }
-//                }
-//                
-//                self.updateCell(atRow: self.currentRow, atSection: self.currentSection)
-//                self.tableView.reloadData()
-//                if self.counter == 0 {
-//                    self.frogButton.isUserInteractionEnabled = false
-//                }
-//                self.saveState()
-//                
-//            }))
-//            undoRowAlert.addAction(UIAlertAction(title: "Cancel", style: .cancel, handler: { (action: UIAlertAction!) in
-//                print("Handle Cancel Logic here")
-//            }))
-//            
-//            self.present(undoRowAlert, animated: true, completion: nil)
-//        })
+        //        let undoRowButton = UIAlertAction(title: "Frog a row", style: .default, handler: { (action) -> Void in
+        //            print("Ok, row frogged.")
+        //            let undoRowAlert = UIAlertController(title: "Frog a row", message: "Are you sure you want to frog a row?", preferredStyle: UIAlertControllerStyle.alert)
+        //            undoRowAlert.addAction(UIAlertAction(title: "Ok", style: .default, handler: { (action: UIAlertAction!) in
+        //                print("Handle Ok logic here")
+        //                let currentRoundGroup = self.currentSection == 0 ? self.roundGroups[self.currentRow] : (self.currentSection == 1 ? self.bottomRoundGroups[self.currentRow]: self.tentaclesRoundGroups[self.currentRow
+        //                    ])
+        //                currentRoundGroup.roundsCompleted -= 1
+        //
+        //                self.currentRow = self.currentRow - 1
+        //                if self.counter >= 1 {
+        //                    self.counter -= 1
+        //                }
+        //                else if self.currentSection != 0 {
+        //                    self.counter = self.roundGroups.count - 1
+        //                    if self.currentSection == 1 {
+        //
+        //                        self.currentSection = 0
+        //                    }
+        //                    else if self.currentSection == 2 {
+        //                        self.currentSection = 1
+        //                    }
+        //                }
+        //
+        //                self.updateCell(atRow: self.currentRow, atSection: self.currentSection)
+        //                self.tableView.reloadData()
+        //                if self.counter == 0 {
+        //                    self.frogButton.isUserInteractionEnabled = false
+        //                }
+        //                self.saveState()
+        //
+        //            }))
+        //            undoRowAlert.addAction(UIAlertAction(title: "Cancel", style: .cancel, handler: { (action: UIAlertAction!) in
+        //                print("Handle Cancel Logic here")
+        //            }))
+        //
+        //            self.present(undoRowAlert, animated: true, completion: nil)
+        //        })
+       
         
         let resetButton = UIAlertAction(title: "Clear all", style: .default, handler: { (action) -> Void in
             print("Ok, cleared all.")
             
+            
             let resetAlert = UIAlertController(title: "Clear all", message: "Are you sure you want to clear all?", preferredStyle: UIAlertControllerStyle.alert)
             resetAlert.addAction(UIAlertAction(title: "Ok", style: .default, handler: { (action: UIAlertAction!) in
                 print("Handle Ok logic here")
-                self.counter = 0
-                self.currentRow = 0
-                self.currentSection = 0
-                self.lastRoundCompleted = 0
-                self.lastRoundCompletedForBottom = 0
-                self.lastRoundCompletedForTentacles = 0
-                self.indexOfTappedInfoButton = 0
-                self.sectionOfTappedInfoButton = 0
-                for roundGroup in self.roundGroups {
-                    roundGroup.roundsCompleted = 0
-                    roundGroup.updateState(lastRoundCompleted: 0, shouldAutoStart: true)
-                }
-                for roundGroup in self.bottomRoundGroups {
-                    roundGroup.roundsCompleted = 0
-                    roundGroup.updateState(lastRoundCompleted: 0, shouldAutoStart: false)
-                }
-                for roundGroup in self.tentaclesRoundGroups {
-                    roundGroup.roundsCompleted = 0
-                    roundGroup.updateState(lastRoundCompleted: 0, shouldAutoStart: false)
-                }
-                if self.counter == 0 {
-                    self.frogButton.isUserInteractionEnabled = false
-                }
+                
+                self.reset()
+                
                 self.tableView.reloadData()
                 self.saveState()
             }))
