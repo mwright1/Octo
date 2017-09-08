@@ -94,13 +94,19 @@ class OctopusPatternViewController: UIViewController {
         tableView.estimatedRowHeight = 66.0
         tableView.rowHeight = UITableViewAutomaticDimension
         
-        tableView.selectRow(at: IndexPath(row: currentRow, section: currentSection), animated: false, scrollPosition: .none)
-        
         tableViewHeightConstraint.constant = (view.frame.size.height - frogButton.frame.size.height)/2
         
         frogButton.imageView?.contentMode = .scaleAspectFit
         
         loadState()
+        
+        DispatchQueue.main.async {
+            let currentIndexPath = IndexPath(row: self.currentRow, section: self.currentSection)
+            self.tableView.selectRow(at: currentIndexPath, animated: false, scrollPosition: .middle)
+        }
+        
+        self.tableView.contentOffset.y
+
     }
     
     func reset() {
@@ -278,7 +284,6 @@ class OctopusPatternViewController: UIViewController {
         defaults.set(lastRoundCompletedForTentacles, forKey: klastRoundCompletedForTentaclesKey)
         defaults.set(currentRow, forKey: kCurrentRow)
         defaults.set(currentSection, forKey: kCurrentSection)
-        
     }
     
     private func loadState() {
