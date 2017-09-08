@@ -126,10 +126,6 @@ class OctopusPatternViewController: UIViewController {
             roundGroup.roundsCompleted = 0
             roundGroup.updateState(lastRoundCompleted: 0, shouldAutoStart: false)
         }
-        
-        if self.counter == 0 {
-            self.frogButton.isUserInteractionEnabled = false
-        }
     }
     
     @IBAction func counterButtonTapped(_ sender: UIButton) {
@@ -193,6 +189,10 @@ class OctopusPatternViewController: UIViewController {
     }
     
     @IBAction func showActionSheet(_ sender: Any) {
+        if self.counter == 0 && self.currentSection == 0 {
+            return
+        }
+        
         let undoMenu = UIAlertController(title: nil, message: "Choose what to frog", preferredStyle: .actionSheet)
         
         let undoStitchButton = UIAlertAction(title: "Frog a stitch", style: .default, handler: { (action) -> Void in
@@ -207,10 +207,6 @@ class OctopusPatternViewController: UIViewController {
                     
                 }))
                 self.present(alert, animated: true, completion: nil)
-            }
-            
-            if self.counter == 0 && self.currentSection == 0 {
-                self.frogButton.isUserInteractionEnabled = false
             }
             
             self.tableView.reloadData()
