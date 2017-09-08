@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="12120" systemVersion="16F73" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" colorMatched="YES" initialViewController="rto-8x-ebF">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="12120" systemVersion="16G29" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" colorMatched="YES" initialViewController="rto-8x-ebF">
     <device id="retina5_5" orientation="portrait">
         <adaptation id="fullscreen"/>
     </device>
@@ -46,7 +46,7 @@
                                                     <state key="selected" image="checkedButton.png"/>
                                                 </button>
                                                 <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="" textAlignment="center" lineBreakMode="wordWrap" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="P2G-iD-J4f">
-                                                    <rect key="frame" x="16" y="0.0" width="40" height="0.0"/>
+                                                    <rect key="frame" x="16" y="20" width="40" height="0.0"/>
                                                     <constraints>
                                                         <constraint firstAttribute="width" constant="40" id="G7e-87-1W1"/>
                                                     </constraints>
@@ -63,10 +63,10 @@
                                             </subviews>
                                             <constraints>
                                                 <constraint firstAttribute="bottomMargin" relation="greaterThanOrEqual" secondItem="6Ad-nn-jH1" secondAttribute="bottom" constant="2" id="0ho-1a-y8d"/>
-                                                <constraint firstItem="P2G-iD-J4f" firstAttribute="top" secondItem="kUq-JK-xZW" secondAttribute="top" id="2ES-Df-JWy"/>
                                                 <constraint firstItem="vWB-ym-BZ0" firstAttribute="top" secondItem="kUq-JK-xZW" secondAttribute="top" constant="5" id="A9k-mH-4wE"/>
                                                 <constraint firstItem="vWB-ym-BZ0" firstAttribute="leading" secondItem="6Ad-nn-jH1" secondAttribute="trailing" constant="5" id="Tfv-HK-SqP"/>
                                                 <constraint firstItem="P2G-iD-J4f" firstAttribute="leading" secondItem="kUq-JK-xZW" secondAttribute="leadingMargin" constant="8" id="VRf-4P-xOr"/>
+                                                <constraint firstItem="P2G-iD-J4f" firstAttribute="top" secondItem="kUq-JK-xZW" secondAttribute="topMargin" constant="12" id="bu4-vR-5xd"/>
                                                 <constraint firstItem="6Ad-nn-jH1" firstAttribute="top" secondItem="kUq-JK-xZW" secondAttribute="topMargin" constant="2" id="dSW-Cq-278"/>
                                                 <constraint firstItem="6Ad-nn-jH1" firstAttribute="leading" secondItem="kUq-JK-xZW" secondAttribute="leading" constant="5" id="g39-Tf-MeY"/>
                                                 <constraint firstAttribute="bottom" secondItem="vWB-ym-BZ0" secondAttribute="bottom" constant="5" id="iE5-D5-pgs"/>

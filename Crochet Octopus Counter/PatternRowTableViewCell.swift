@@ -18,6 +18,7 @@ class PatternRowTableViewCell: UITableViewCell {
         super.prepareForReuse()
         checkBoxButton.isSelected = false
         roundLabel.text = ""
+        rowPatternLabel.textColor = .darkGray
     }
     
     override func awakeFromNib() {
@@ -26,7 +27,6 @@ class PatternRowTableViewCell: UITableViewCell {
     }
     
     override func setSelected(_ selected: Bool, animated: Bool) {
-        super.setSelected(selected, animated: animated)
         checkBoxButton.contentEdgeInsets = UIEdgeInsetsMake(10, 10, 10, 10)
     }
     
